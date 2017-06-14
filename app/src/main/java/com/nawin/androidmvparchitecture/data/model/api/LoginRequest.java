@@ -8,6 +8,7 @@ public class LoginRequest {
 
     private String userName;
     private String password;
+    private String deviceToken;
 
     public String getUserName() {
         return userName;
@@ -25,4 +26,11 @@ public class LoginRequest {
         this.password = password;
     }
 
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
 }

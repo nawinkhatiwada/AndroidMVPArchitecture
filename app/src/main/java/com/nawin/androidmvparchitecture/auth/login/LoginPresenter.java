@@ -2,6 +2,7 @@ package com.nawin.androidmvparchitecture.auth.login;
 
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
+import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 
 import retrofit2.Call;
@@ -16,7 +17,7 @@ import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
 
 public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
-    private Call<UserInfo> call;
+    private Call<BaseResponse<UserInfo>> call;
 
     public LoginPresenter(LoginContract.View view) {
         this.view = view;
@@ -36,18 +37,23 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void onLogin(LoginRequest loginRequest) {
         view.showLoginProgress();
-        call = Data.getInstance().getLogin(loginRequest, new Callback<UserInfo>() {
+        call = Data.getInstance().getLogin(loginRequest, new Callback<BaseResponse<UserInfo>>() {
             @Override
-            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    view.showLoginSuccess("Login Success");
+            public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
+                if (response.isSuccessful()) {
+                    UserInfo userInfo = response.body().getResponse();
+                    if (userInfo != null) {
+                        view.showLoginSuccess(response.body().getStatusMessage());
+                    } else {
+                        view.showLoginError();
+                    }
                 } else {
                     view.showLoginError();
                 }
             }
 
             @Override
-            public void onFailure(Call<UserInfo> call, Throwable t) {
+            public void onFailure(Call<BaseResponse<UserInfo>> call, Throwable t) {
 
             }
         });

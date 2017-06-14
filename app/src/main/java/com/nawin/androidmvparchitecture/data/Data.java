@@ -1,14 +1,13 @@
 package com.nawin.androidmvparchitecture.data;
 
+import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
+import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 import com.nawin.androidmvparchitecture.data.remote.DataModule;
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
-import com.google.gson.Gson;
 
-import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
@@ -42,8 +41,8 @@ public class Data {
         this.remoteRepo = remoteRepo;
     }
 
-    public Call<UserInfo> getLogin(LoginRequest loginRequest, Callback<UserInfo> callback) {
-        Call<UserInfo> call = remoteRepo.getLogin(loginRequest);
+    public Call<BaseResponse<UserInfo>> getLogin(LoginRequest loginRequest, Callback<BaseResponse<UserInfo>> callback) {
+        Call<BaseResponse<UserInfo>> call = remoteRepo.getLogin(loginRequest);
         call.enqueue(callback);
         return call;
     }

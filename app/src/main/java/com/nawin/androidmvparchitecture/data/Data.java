@@ -2,11 +2,15 @@ package com.nawin.androidmvparchitecture.data;
 
 import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
+import com.nawin.androidmvparchitecture.data.model.News;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 import com.nawin.androidmvparchitecture.data.remote.DataModule;
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
+
+import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +47,14 @@ public class Data {
 
     public Call<BaseResponse<UserInfo>> getLogin(LoginRequest loginRequest, Callback<BaseResponse<UserInfo>> callback) {
         Call<BaseResponse<UserInfo>> call = remoteRepo.getLogin(loginRequest);
+        call.enqueue(callback);
+        return call;
+    }
+
+    public Call<BaseResponse<List<News>>> getNews(String userId, Callback<BaseResponse<List<News>>> callback) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        Call<BaseResponse<List<News>>> call = remoteRepo.getNews(params);
         call.enqueue(callback);
         return call;
     }

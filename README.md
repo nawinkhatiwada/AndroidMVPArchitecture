@@ -30,5 +30,5 @@ https://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-di
 
 https://msdn.microsoft.com/en-us/library/ff649571.aspx
 
-**Feel free to submit the issues and suggestions for improving the coding standard :) **
+**Feel free to submit the issues and suggestions for improving the coding standard :)**
 

@@ -2,7 +2,7 @@
 This repository consist of basic android MVP architecture without using Dagger, RxJava, RxAndroid. In this repository there is Retrofit, OkHttp for API purpose. 
 AndroidMVPArchitecture is developed for beginners who are well known about basic android application development and wants to use trending MVP Architecture in project but are unknown about RxJava, RxAndroid and searching for way to implement MVP without using RX and Dagger. The architecture is done in such a way that developer can easily implement Rx and Dagger , after knowing about it,in this project.
 
-#What is MVP?
+# What is MVP?
 MVP is a user interface architectural pattern engineered to facilitate automated unit testing and improve the separation of concerns in presentation logic:
 
 The model is an interface defining the data to be displayed or otherwise acted upon in the user interface.

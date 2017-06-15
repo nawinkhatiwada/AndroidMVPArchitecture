@@ -9,7 +9,6 @@ AndroidMVPArchitecture is developed for beginners who are well known about basic
  
  # What is MVP?
  
- **MVP**
 ![MVP Pattern](https://i-msdn.sec.s-msft.com/dynimg/IC340102.png)
 
 MVP is a user interface architectural pattern engineered to facilitate automated unit testing and improve the separation of concerns in presentation logic:

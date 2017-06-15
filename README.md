@@ -17,7 +17,7 @@ The model is an interface defining the data to be displayed or otherwise acted u
 The view is a passive interface that displays data (the model) and routes user commands (events) to the presenter to act upon that data.
 The presenter acts upon the model and the view. It retrieves data from repositories (the model), and formats it for display in the view.
 
-source: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
+**source:** https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
 
 **Feel free to submit the issues and suggestions for improving the coding standard :)**
 

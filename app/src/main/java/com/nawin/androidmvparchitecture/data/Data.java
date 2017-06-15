@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.data;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
 import com.nawin.androidmvparchitecture.data.model.News;
@@ -14,6 +16,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -26,8 +29,7 @@ public class Data {
     private final RemoteRepo remoteRepo;
     private static Data data;
 
-
-    public static Data getInstance() {
+    public static Data getInstance(Context context) {
         if (data == null) {
             RemoteRepo remoteRepo = new Retrofit.Builder()
                     .baseUrl(DataModule.BASE_URL)
@@ -35,7 +37,7 @@ public class Data {
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .build().create(RemoteRepo.class);
 
-            data = new Data(new LocalRepo(), remoteRepo);
+            data = new Data(new LocalRepo(context, new Gson()), remoteRepo);
         }
         return data;
     }
@@ -45,12 +47,6 @@ public class Data {
         this.remoteRepo = remoteRepo;
     }
 
-    public Call<BaseResponse<UserInfo>> getLogin(LoginRequest loginRequest, Callback<BaseResponse<UserInfo>> callback) {
-        Call<BaseResponse<UserInfo>> call = remoteRepo.getLogin(loginRequest);
-        call.enqueue(callback);
-        return call;
-    }
-
     public Call<BaseResponse<List<News>>> getNews(String userId, Callback<BaseResponse<List<News>>> callback) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("userId", userId);
@@ -58,4 +54,28 @@ public class Data {
         call.enqueue(callback);
         return call;
     }
+
+    public Call<BaseResponse<UserInfo>> requestLogin(final LoginRequest loginRequest, final Callback<BaseResponse<UserInfo>> callback) {
+
+        Call<BaseResponse<UserInfo>> call = remoteRepo.requestLogin(loginRequest);
+        call.enqueue(new Callback<BaseResponse<UserInfo>>() {
+            @Override
+            public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
+                UserInfo userInfo = response.body() == null ? null : response.body().getResponse();
+                if (userInfo != null) {
+                    localRepo.setUserInfo(userInfo);
+                    callback.onResponse(call, response);
+                } else {
+                    callback.onFailure(call, new Exception());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<UserInfo>> call, Throwable t) {
+                callback.onFailure(call, t);
+            }
+        });
+        return call;
+    }
+
 }

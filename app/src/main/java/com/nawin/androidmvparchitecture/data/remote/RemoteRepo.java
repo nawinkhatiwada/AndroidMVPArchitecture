@@ -19,7 +19,7 @@ import retrofit2.http.POST;
 public interface RemoteRepo {
 
     @POST("/login")
-    Call<BaseResponse<UserInfo>> getLogin(@Body LoginRequest loginRequest);
+    Call<BaseResponse<UserInfo>> requestLogin(@Body LoginRequest loginRequest);
 
     @POST("/getNews")
     Call<BaseResponse<List<News>>> getNews(@Body HashMap<String, Object> params);

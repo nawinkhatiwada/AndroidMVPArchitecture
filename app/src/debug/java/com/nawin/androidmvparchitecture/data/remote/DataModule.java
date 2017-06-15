@@ -8,7 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 
 public class DataModule {
-    public static final String BASE_URL = "balasdf";
+    public static final String BASE_URL = "http://example.com";
     public static OkHttpClient getHttpClient(){
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);

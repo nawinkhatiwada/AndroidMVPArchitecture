@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     private LoginContract.Presenter presenter;
@@ -12,7 +13,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this, this);
+        presenter.onLogin("username", "1234");
     }
 
     @Override
@@ -33,11 +35,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showLoginSuccess(String message) {
-
     }
 
     @Override
-    public void showLoginError() {
+    public void showLoginError(String message) {
 
     }
 

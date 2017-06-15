@@ -15,10 +15,10 @@ public interface LoginContract {
 
         void showLoginSuccess(String message);
 
-        void showLoginError();
+        void showLoginError(String message);
     }
 
     interface Presenter extends BasePresenter {
-        void onLogin(LoginRequest loginRequest);
+        void onLogin(String username, String password);
     }
 }

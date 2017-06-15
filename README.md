@@ -19,3 +19,5 @@ https://github.com/googlesamples/android-architecture
 https://code.tutsplus.com/tutorials/an-introduction-to-model-view-presenter-on-android--cms-26162
 
 https://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference
+
+

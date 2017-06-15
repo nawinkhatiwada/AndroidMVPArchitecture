@@ -42,15 +42,10 @@ public class LocalRepo {
     public UserInfo getUserInfo() {
         if (cachedUserInfo == null) {
             String userInfoS = sharedPreferences.getString(USER_INFO, null);
-            Log.d("userInfooooo",userInfoS);
             if (!TextUtils.isEmpty(userInfoS)) {
                 cachedUserInfo = gson.fromJson(userInfoS, UserInfo.class);
             }
         }
-        return cachedUserInfo;
-    }
-
-    public static UserInfo userInfo() {
         return cachedUserInfo;
     }
 }

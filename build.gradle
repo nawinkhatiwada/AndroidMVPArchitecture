@@ -26,4 +26,6 @@ ext{
     gsonVersion = '2.8.0'
     okhttpVersion = '3.6.0'
     retrofitVersion = '2.2.0'
+    stethoVersion = '1.4.2'
+
 }

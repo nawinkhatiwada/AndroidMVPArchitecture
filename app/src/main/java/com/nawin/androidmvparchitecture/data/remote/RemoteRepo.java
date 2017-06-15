@@ -21,6 +21,6 @@ public interface RemoteRepo {
     @POST("/login")
     Call<BaseResponse<UserInfo>> requestLogin(@Body LoginRequest loginRequest);
 
-    @POST("/getNews")
-    Call<BaseResponse<List<News>>> getNews(@Body HashMap<String, Object> params);
+    @POST("/news")
+    Call<BaseResponse<List<News>>> requestNews(@Body HashMap<String, Object> params);
 }

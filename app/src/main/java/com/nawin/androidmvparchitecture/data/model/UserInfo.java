@@ -5,11 +5,18 @@ package com.nawin.androidmvparchitecture.data.model;
  */
 
 public class UserInfo {
+
+    /**
+     * userId : 1
+     * username : nawinkhatiwada
+     * address : Anamnagar
+     * phone : 988498948594
+     */
+
     private int userId;
-    private String name;
+    private String username;
     private String address;
-    private String phoneNumber;
-    private int age;
+    private String phone;
 
     public int getUserId() {
         return userId;
@@ -19,12 +26,12 @@ public class UserInfo {
         this.userId = userId;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getAddress() {
@@ -35,19 +42,11 @@ public class UserInfo {
         this.address = address;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

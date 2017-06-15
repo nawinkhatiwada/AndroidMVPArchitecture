@@ -19,6 +19,9 @@ The presenter acts upon the model and the view. It retrieves data from repositor
 
 source: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
 
+**Feel free to submit the issues and suggestions for improving the coding standard :)**
+
+
 # Important Links:
 https://medium.com/@cervonefrancesco/model-view-presenter-android-guidelines-94970b430ddf
 
@@ -29,6 +32,4 @@ https://code.tutsplus.com/tutorials/an-introduction-to-model-view-presenter-on-a
 https://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference
 
 https://msdn.microsoft.com/en-us/library/ff649571.aspx
-
-**Feel free to submit the issues and suggestions for improving the coding standard :)**
 

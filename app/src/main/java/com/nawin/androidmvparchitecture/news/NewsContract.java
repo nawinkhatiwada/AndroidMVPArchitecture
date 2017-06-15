@@ -1,4 +1,4 @@
-package com.nawin.androidmvparchitecture.auth.news;
+package com.nawin.androidmvparchitecture.news;
 
 import com.nawin.androidmvparchitecture.BasePresenter;
 import com.nawin.androidmvparchitecture.BaseView;

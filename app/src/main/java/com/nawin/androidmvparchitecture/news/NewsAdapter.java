@@ -1,4 +1,4 @@
-package com.nawin.androidmvparchitecture.auth.news;
+package com.nawin.androidmvparchitecture.news;
 
 /**
  * Created by brainovation on 6/14/17.

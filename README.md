@@ -19,7 +19,7 @@ The presenter acts upon the model and the view. It retrieves data from repositor
 
 **source:** https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
 
-**Feel free to submit the issues and suggestions for improving the coding standard**![a](http://icons.iconarchive.com/icons/hopstarter/keriyo-emoticons/128/Smiley-icon.png)
+**Feel free to submit the issues and suggestions for improving the coding standard :)**
 
 
 

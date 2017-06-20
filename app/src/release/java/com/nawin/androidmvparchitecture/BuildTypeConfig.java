@@ -15,7 +15,4 @@ public class BuildTypeConfig {
     void set() {
     }
 
-    static void onAttachBaseContext(Context context) {
-
-    }
 }

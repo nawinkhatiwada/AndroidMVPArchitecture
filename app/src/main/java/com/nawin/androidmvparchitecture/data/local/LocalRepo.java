@@ -29,7 +29,7 @@ public class LocalRepo {
         return localRepo;
     }
 
-    public LocalRepo(Context context, Gson gson) {
+    private LocalRepo(Context context, Gson gson) {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         this.gson = gson;
     }

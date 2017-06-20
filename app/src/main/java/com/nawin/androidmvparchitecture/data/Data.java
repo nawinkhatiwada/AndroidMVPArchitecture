@@ -37,7 +37,7 @@ public class Data {
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .build().create(RemoteRepo.class);
 
-            data = new Data(new LocalRepo(context, new Gson()), remoteRepo);
+            data = new Data(LocalRepo.getInstance(context), remoteRepo);
         }
         return data;
     }

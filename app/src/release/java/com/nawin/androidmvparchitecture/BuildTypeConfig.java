@@ -7,9 +7,10 @@ import android.content.Context;
  */
 
 public class BuildTypeConfig {
-        private Context context;
+    private Context context;
+
     public BuildTypeConfig(Context ctx) {
-       this.context = ctx;
+        this.context = ctx;
     }
 
     void set() {

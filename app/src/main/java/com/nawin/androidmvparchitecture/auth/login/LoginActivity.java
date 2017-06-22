@@ -1,10 +1,9 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     private LoginContract.Presenter presenter;

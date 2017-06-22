@@ -33,7 +33,7 @@ public class Data {
         if (data == null) {
             RemoteRepo remoteRepo = new Retrofit.Builder()
                     .baseUrl(DataModule.BASE_URL)
-                    .client(DataModule.getHttpClient()) //client is for logging the request and response, must be removed in release build
+                    .client(DataModule.getHttpClient()) //client is for logging the request and response
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .build().create(RemoteRepo.class);
 

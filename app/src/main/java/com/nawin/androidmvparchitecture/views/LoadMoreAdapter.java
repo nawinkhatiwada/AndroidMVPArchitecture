@@ -25,11 +25,6 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
     private RecyclerView.OnScrollListener scrollListener;
     private int loadMoreThreshold = DEFAULT_LOAD_MORE_THRESHOLD;
 
-    /**
-     * to use the default implementation of LoadMore view
-     *
-     * @param recyclerView
-     */
     public LoadMoreAdapter(@NonNull RecyclerView recyclerView) {
         this(recyclerView, true);
     }

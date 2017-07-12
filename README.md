@@ -8,7 +8,7 @@ This repository consists of basic Android MVP architecture without using Dagger,
  
  # What is MVP?
  
-![MVP Pattern](https://i-msdn.sec.s-msft.com/dynimg/IC340102.png)
+![MVP Pattern](http://gwb.blob.core.windows.net/rajeshpillai/figure_1.jpg)
 
 MVP is a user interface architectural pattern engineered to facilitate automated unit testing and improve the separation of concerns in presentation logic:
 

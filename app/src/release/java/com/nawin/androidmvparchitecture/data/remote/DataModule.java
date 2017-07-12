@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient;
  */
 
 public class DataModule {
-    public static final String BASE_URL = "balasdf";
+    public static final String BASE_URL = "http://api.stackexchange.com/2.2/";
 
     public static OkHttpClient getHttpClient() {
         return new OkHttpClient.Builder().build();

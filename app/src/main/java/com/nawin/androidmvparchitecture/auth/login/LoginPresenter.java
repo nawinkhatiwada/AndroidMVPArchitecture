@@ -2,6 +2,7 @@ package com.nawin.androidmvparchitecture.auth.login;
 
 import android.content.Context;
 
+import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
@@ -55,7 +56,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                         view.showLoginError(response.body().getStatusMessage());
                     }
                 } else {
-                    view.showLoginError("");
+                    view.showLoginError(context.getString(R.string.server_error));
                 }
             }
 

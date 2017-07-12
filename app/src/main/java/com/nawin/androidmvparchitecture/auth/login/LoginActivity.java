@@ -13,7 +13,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         presenter = new LoginPresenter(this, this);
-        presenter.onLogin("username", "1234");
+//        presenter.onLogin("username", "1234");
     }
 
     @Override

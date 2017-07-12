@@ -3,4 +3,5 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="server_error">Server Error</string>
 </resources>

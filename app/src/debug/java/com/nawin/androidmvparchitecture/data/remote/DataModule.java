@@ -10,7 +10,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  */
 
 public class DataModule {
-    public static final String BASE_URL = "http://demo3075857.mockable.io/";
+    public static final String BASE_URL = "http://api.stackexchange.com/2.2/";
 
     public static OkHttpClient getHttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

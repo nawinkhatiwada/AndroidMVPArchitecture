@@ -1,5 +1,5 @@
 # Android MVP Architecture
-This repository consists of basic Android MVP architecture without using Dagger, RxJava, RxAndroid. In this repository, there is Retrofit, OkHttp for API purpose. AndroidMVPArchitecture is developed for beginners who are well known about basic Android application development and wants to use trending MVP Architecture in the project but are unknown about RxJava, RxAndroid and searching for ways to implement MVP without using RX and Dagger. The architecture is done in such a way that developers can easily implement Rx and Dagger, after knowing about it, in this project.
+This repository consists of basic Android MVP architecture without using Dagger, RxJava, RxAndroid. In this repository, there is Retrofit, OkHttp for API purpose. AndroidMVPArchitecture is developed for beginners who are well known about basic Android application development and wants to use trending MVP Architecture in the project but are unknown about RxJava, RxAndroid and searching for ways to implement MVP without using RX and Dagger. The architecture is done in such a way that developers can easily implement **Rx**, after knowing about it, in this project.
 
   **MVC vs MVP**
   

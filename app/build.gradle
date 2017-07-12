@@ -33,6 +33,8 @@ dependencies {
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+
 
     debugCompile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
     debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"

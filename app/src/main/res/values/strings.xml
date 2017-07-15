@@ -4,4 +4,6 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="server_error">Server Error</string>
+    <string name="title">Title: %s</string>
+    <string name="count">Count: %s</string>
 </resources>

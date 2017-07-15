@@ -18,7 +18,7 @@ The presenter acts upon the model and the view. It retrieves data from repositor
 
 **source:** https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
 
-**Feel free to submit the issues and suggestions for improving the coding standard :)**
+**Feel free to submit the issues and suggestions for improving the coding standard** ![](https://github.com/nawinkhatiwada/AndroidMVPArchitecture/blob/master/app/src/main/res/drawable/happiness.png)
 
 
 

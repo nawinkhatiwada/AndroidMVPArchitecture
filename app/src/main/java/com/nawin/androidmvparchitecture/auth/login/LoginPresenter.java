@@ -48,7 +48,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         call = Data.getInstance(context).requestLogin(loginRequest, new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
-                if (response.isSuccessful()) {
+                if (response != null && response.isSuccessful()) {
                     UserInfo userInfo = response.body().getResponse();
                     if (userInfo != null) {
                         view.showLoginSuccess(response.body().getStatusMessage());

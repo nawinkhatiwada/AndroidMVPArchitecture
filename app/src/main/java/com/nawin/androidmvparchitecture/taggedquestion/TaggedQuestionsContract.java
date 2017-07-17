@@ -1,4 +1,4 @@
-package com.nawin.androidmvparchitecture.news;
+package com.nawin.androidmvparchitecture.taggedquestion;
 
 import com.nawin.androidmvparchitecture.BasePresenter;
 import com.nawin.androidmvparchitecture.BaseView;
@@ -7,7 +7,7 @@ import com.nawin.androidmvparchitecture.BaseView;
  * Created by brainovation on 6/14/17.
  */
 
-public interface NewsContract {
+public interface TaggedQuestionsContract {
 
     interface View extends BaseView<Presenter> {
 

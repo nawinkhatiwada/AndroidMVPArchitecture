@@ -1,4 +1,4 @@
-package com.nawin.androidmvparchitecture.news;
+package com.nawin.androidmvparchitecture.taggedquestion;
 
 
 import android.content.Context;
@@ -21,12 +21,12 @@ import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
  * Created by brainovation on 6/14/17.
  */
 
-public class NewsPresenter implements NewsContract.Presenter {
+public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     private Context context;
-    private NewsContract.View view;
+    private TaggedQuestionsContract.View view;
     private Call<BaseResponse<List<News>>> calls;
 
-    public NewsPresenter(Context context, NewsContract.View view) {
+    public TaggedQuestionsPresenter(Context context, TaggedQuestionsContract.View view) {
         this.context = context;
         this.view = view;
         view.setPresenter(this);

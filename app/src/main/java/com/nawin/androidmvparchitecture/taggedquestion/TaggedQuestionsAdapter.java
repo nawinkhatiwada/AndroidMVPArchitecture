@@ -1,4 +1,4 @@
-package com.nawin.androidmvparchitecture.news;
+package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

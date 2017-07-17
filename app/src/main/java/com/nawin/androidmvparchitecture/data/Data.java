@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
 import com.nawin.androidmvparchitecture.data.model.News;
+import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
@@ -75,6 +76,12 @@ public class Data {
                 callback.onFailure(call, t);
             }
         });
+        return call;
+    }
+
+    public Call<BaseResponse<List<TaggedQuestions>>> requestTaggedQuestion(Callback<BaseResponse<List<TaggedQuestions>>> callback) {
+        Call<BaseResponse<List<TaggedQuestions>>> call = remoteRepo.getTaggedQuestions();
+        call.enqueue(callback);
         return call;
     }
 

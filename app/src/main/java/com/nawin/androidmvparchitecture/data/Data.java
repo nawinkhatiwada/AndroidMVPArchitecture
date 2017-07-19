@@ -80,12 +80,6 @@ public class Data {
         return call;
     }
 
-    public Call<BaseResponse<List<TaggedQuestions>>> requestTaggedQuestion(Callback<BaseResponse<List<TaggedQuestions>>> callback) {
-        Call<BaseResponse<List<TaggedQuestions>>> call = remoteRepo.getTaggedQuestions();
-        call.enqueue(callback);
-        return call;
-    }
-
     public Call<BaseResponse<List<Tags>>> requestTags(Callback<BaseResponse<List<Tags>>> callback){
         Call<BaseResponse<List<Tags>>> call = remoteRepo.getTags();
         call.enqueue(callback);

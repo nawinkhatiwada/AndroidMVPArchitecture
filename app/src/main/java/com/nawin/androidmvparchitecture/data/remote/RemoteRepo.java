@@ -2,6 +2,7 @@ package com.nawin.androidmvparchitecture.data.remote;
 
 import com.nawin.androidmvparchitecture.data.model.News;
 import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
+import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
@@ -28,4 +29,7 @@ public interface RemoteRepo {
 
     @GET("/search?pagesize=25&order=desc&sort=activity&tagged=android-annotations&site=stackoverflow")
     Call<BaseResponse<List<TaggedQuestions>>> getTaggedQuestions();
+
+    @GET("/search?pagesize=25&order=desc&sort=activity&tagged=android-annotations&site=stackoverflow")
+    Call<BaseResponse<List<Tags>>> getTags();
 }

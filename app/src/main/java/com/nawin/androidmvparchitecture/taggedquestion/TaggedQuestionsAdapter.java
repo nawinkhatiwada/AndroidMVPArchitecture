@@ -18,15 +18,14 @@ import java.util.List;
  * Created by brainovation on 6/14/17.
  */
 
-public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
-    private final List<TaggedQuestions> items;
+class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
+    private final List<String> items;
     private final TaggedQuestionSelectionListener listener;
 
-    public TaggedQuestionsAdapter(@NonNull RecyclerView recyclerView,
-                                  boolean showLoading,
-                                  List<TaggedQuestions> taggedQuestions,
-                                  TaggedQuestionSelectionListener listener) {
-        super(recyclerView, showLoading);
+    TaggedQuestionsAdapter(@NonNull RecyclerView recyclerView,
+                           List<String> taggedQuestions,
+                           TaggedQuestionSelectionListener listener) {
+        super(recyclerView, true);
         this.items = taggedQuestions;
         this.listener = listener;
     }
@@ -44,16 +43,17 @@ public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapt
     @Override
     public void onBindViewHolder_(final TaggedQuestionsHolder holder, final int position) {
 
-        TaggedQuestions taggedQuestions = items.get(position);
-        if (taggedQuestions != null) {
-            holder.title.setText(taggedQuestions.getTitle());
-            holder.count.setText(taggedQuestions.getAnswerCount());
+//        String taggedQuestions = items.get(position);
+        if (items != null) {
+            holder.title.setText(items.get(position));
+//            holder.count.setText(taggedQuestions.getAnswerCount());
         }
 
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onTaggedQuestionSelected(items.get(holder.getAdapterPosition()));
+                if (items != null)
+                    listener.onTaggedQuestionSelected(items.get(holder.getAdapterPosition()));
             }
         });
     }
@@ -63,14 +63,14 @@ public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapt
         return items.size();
     }
 
-    public void addMoreItems(List<TaggedQuestions> items, boolean hasMoreItems) {
+    public void addMoreItems(List<String> items, boolean hasMoreItems) {
         final int count = this.items.size();
         this.items.addAll(items);
         onItemsAdded(count, items.size(), hasMoreItems);
     }
 
     interface TaggedQuestionSelectionListener {
-        void onTaggedQuestionSelected(TaggedQuestions items);
+        void onTaggedQuestionSelected(String items);
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {

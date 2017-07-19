@@ -51,9 +51,9 @@ public class LoginPresenter implements LoginContract.Presenter {
                 if (response.isSuccessful()) {
                     UserInfo userInfo = response.body().getResponse();
                     if (userInfo != null) {
-                        view.showLoginSuccess(response.body().getStatusMessage());
+//                        view.showLoginSuccess(response.body().getStatusMessage());
                     } else {
-                        view.showLoginError(response.body().getStatusMessage());
+//                        view.showLoginError(response.body().getStatusMessage());
                     }
                 } else {
                     view.showLoginError(context.getString(R.string.server_error));

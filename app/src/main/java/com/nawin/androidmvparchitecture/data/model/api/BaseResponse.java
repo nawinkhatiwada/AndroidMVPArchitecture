@@ -6,31 +6,31 @@ package com.nawin.androidmvparchitecture.data.model.api;
 
 public class BaseResponse<T> {
 
-    private int status;
-    private String statusMessage;
-    private T response;
+//    private int status;
+//    private String statusMessage;
+    private T items;
 
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public String getStatusMessage() {
-        return statusMessage;
-    }
-
-    public void setStatusMessage(String statusMessage) {
-        this.statusMessage = statusMessage;
-    }
+//    public int getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(int status) {
+//        this.status = status;
+//    }
+//
+//    public String getStatusMessage() {
+//        return statusMessage;
+//    }
+//
+//    public void setStatusMessage(String statusMessage) {
+//        this.statusMessage = statusMessage;
+//    }
 
     public T getResponse() {
-        return response;
+        return items;
     }
 
     public void setResponse(T response) {
-        this.response = response;
+        this.items = response;
     }
 }

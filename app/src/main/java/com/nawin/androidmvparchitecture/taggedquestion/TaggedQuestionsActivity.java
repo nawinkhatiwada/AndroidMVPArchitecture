@@ -3,6 +3,7 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
@@ -15,12 +16,15 @@ import java.util.List;
 
 public class TaggedQuestionsActivity extends AppCompatActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
+    RecyclerView rvTaggedQuestion;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tagged_questions);
+        rvTaggedQuestion = (RecyclerView) findViewById(R.id.rvTaggedQuestions);
         presenter = new TaggedQuestionsPresenter(this, this);
+
         presenter.start();
     }
 
@@ -46,8 +50,15 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void showTaggedQuestionLoadSuccess(List<TaggedQuestions> taggedQuestions, boolean hasMoreItems) {
+    public void showTaggedQuestionLoadSuccess(List<String> taggedQuestions, boolean hasMoreItems) {
+        TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) rvTaggedQuestion.getAdapter();
+        if (adapter != null)
+            adapter.detachLoadMore();
+        adapter = new TaggedQuestionsAdapter(rvTaggedQuestion, taggedQuestions, presenter);
 
+        if (hasMoreItems)
+            adapter.attachLoadMore(presenter);
+        this.rvTaggedQuestion.setAdapter(adapter);
     }
 
     @Override

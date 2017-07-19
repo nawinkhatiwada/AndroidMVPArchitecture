@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 
 import java.util.List;

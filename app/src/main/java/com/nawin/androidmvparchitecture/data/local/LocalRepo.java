@@ -10,26 +10,22 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 /**
  * Created by brainovation on 6/13/17.
  */
-
+@Singleton
 public class LocalRepo {
 
     private static final String USER_INFO = "_user_info";
     private final SharedPreferences sharedPreferences;
     private final Gson gson;
     private static UserInfo cachedUserInfo;
-    private static LocalRepo localRepo;
 
-    public static LocalRepo getInstance(Context context) {
-        if (localRepo == null) {
-            localRepo = new LocalRepo(context, new Gson());
-        }
-        return localRepo;
-    }
-
-    private LocalRepo(Context context, Gson gson) {
+    @Inject
+    LocalRepo(Context context, Gson gson) {
         this.sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         this.gson = gson;
     }

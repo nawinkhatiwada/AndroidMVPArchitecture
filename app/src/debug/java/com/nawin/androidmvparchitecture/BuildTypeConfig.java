@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.facebook.stetho.Stetho;
 
+import javax.inject.Inject;
+
 /**
  * Created by brainovation on 6/15/17.
  */
@@ -11,7 +13,8 @@ import com.facebook.stetho.Stetho;
 public class BuildTypeConfig {
     private final Context context;
 
-    public BuildTypeConfig(Context context) {
+    @Inject
+    BuildTypeConfig(Context context) {
         this.context = context;
     }
 

@@ -59,7 +59,7 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
 
     @Override
     public int getItemViewType_(int position) {
-        return items.size();
+        return 0;
     }
 
     public void addMoreItems(List<String> items, boolean hasMoreItems) {

@@ -16,6 +16,9 @@ import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,26 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by brainovation on 6/13/17.
  */
-
+@Singleton
 public class Data {
     private final LocalRepo localRepo;
     private final RemoteRepo remoteRepo;
-    private static Data data;
 
-    public static Data getInstance(Context context) {
-        if (data == null) {
-            RemoteRepo remoteRepo = new Retrofit.Builder()
-                    .baseUrl(DataModule.BASE_URL)
-                    .client(DataModule.getHttpClient()) //client is for logging the request and response
-                    .addConverterFactory(GsonConverterFactory.create(new Gson()))
-                    .build().create(RemoteRepo.class);
-
-            data = new Data(LocalRepo.getInstance(context), remoteRepo);
-        }
-        return data;
-    }
-
-    private Data(LocalRepo localRepo, RemoteRepo remoteRepo) {
+    @Inject
+    Data(LocalRepo localRepo, RemoteRepo remoteRepo) {
         this.localRepo = localRepo;
         this.remoteRepo = remoteRepo;
     }
@@ -80,7 +70,7 @@ public class Data {
         return call;
     }
 
-    public Call<BaseResponse<List<Tags>>> requestTags(Callback<BaseResponse<List<Tags>>> callback){
+    public Call<BaseResponse<List<Tags>>> requestTags(Callback<BaseResponse<List<Tags>>> callback) {
         Call<BaseResponse<List<Tags>>> call = remoteRepo.getTags();
         call.enqueue(callback);
         return call;

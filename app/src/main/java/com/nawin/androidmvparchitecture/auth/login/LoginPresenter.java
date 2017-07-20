@@ -2,6 +2,7 @@ package com.nawin.androidmvparchitecture.auth.login;
 
 import android.content.Context;
 
+import com.nawin.androidmvparchitecture.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
@@ -21,11 +22,11 @@ import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
 public class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private Call<BaseResponse<UserInfo>> call;
-    private final Context context;
+    private  MvpComponent component;
 
-    public LoginPresenter(Context context, LoginContract.View view) {
+    public LoginPresenter(MvpComponent component, LoginContract.View view) {
         this.view = view;
-        this.context = context;
+        this.component = component;
         view.setPresenter(this);
     }
 
@@ -45,7 +46,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUserName(username);
         loginRequest.setPassword(password);
-        call = Data.getInstance(context).requestLogin(loginRequest, new Callback<BaseResponse<UserInfo>>() {
+        call = component.data().requestLogin(loginRequest, new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
                 if (response.isSuccessful()) {
@@ -56,14 +57,16 @@ public class LoginPresenter implements LoginContract.Presenter {
 //                        view.showLoginError(response.body().getStatusMessage());
                     }
                 } else {
-                    view.showLoginError(context.getString(R.string.server_error));
+                    view.showLoginError(component.context().getString(R.string.server_error));
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<UserInfo>> call, Throwable t) {
-                view.showLoginError(t.getMessage());
+//                view.showLoginError(t.getMessage());
+
             }
         });
+
     }
 }

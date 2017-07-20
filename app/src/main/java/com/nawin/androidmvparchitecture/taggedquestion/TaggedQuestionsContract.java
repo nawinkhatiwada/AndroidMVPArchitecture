@@ -22,9 +22,12 @@ public interface TaggedQuestionsContract {
 
         void showLoadMoreProgress();
 
-        void showLoadMoreSuccess();
+        void showMoreItems();
+
+        void showLoadMoreComplete();
 
         void showLoadMoreError();
+
 
     }
 

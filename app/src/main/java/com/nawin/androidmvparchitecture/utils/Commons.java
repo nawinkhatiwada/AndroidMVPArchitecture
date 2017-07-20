@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.utils;
 
+import java.util.List;
+
 import retrofit2.Call;
 
 /**
@@ -16,4 +18,9 @@ public class Commons {
             }
         }
     }
+
+    public static boolean isEmpty(List list) {
+        return list == null || list.isEmpty();
+    }
+
 }

@@ -54,7 +54,13 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
                             (getItemCount_() - (loadMoreThreshold + 1))) {
                         loadPolicy.setLoadStart();
                         listener.onLoadMore();
-                        notifyItemInserted(getItemCount_());
+                        if (showLoading)
+                            recyclerView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    notifyItemInserted(getItemCount_());
+                                }
+                            });
                     }
                 }
             }

@@ -145,7 +145,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
 
     private static class BottomProgressViewHolder extends RecyclerView.ViewHolder {
 
-        public BottomProgressViewHolder(View itemView) {
+        BottomProgressViewHolder(View itemView) {
             super(itemView);
         }
     }
@@ -181,7 +181,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
             return !isLoading && !this.loadComplete && failCount <= MAX_RETRY_POLICY_FAIL_COUNT;
         }
 
-        public void reset(boolean hasMoreItems) {
+        void reset(boolean hasMoreItems) {
             this.isLoading = false;
             this.loadComplete = !hasMoreItems;
             this.failCount = 0;

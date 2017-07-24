@@ -78,14 +78,13 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 
     }
 
-
-    @Override
-    public void showLoadMoreError() {
-
-    }
-
     @Override
     public void showLoadMoreComplete() {
         ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadComplete();
+    }
+
+    @Override
+    public void showLoadMoreError(String message) {
+
     }
 }

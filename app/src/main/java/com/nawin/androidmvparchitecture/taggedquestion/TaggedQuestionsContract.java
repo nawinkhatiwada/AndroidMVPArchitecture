@@ -3,6 +3,7 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 import com.nawin.androidmvparchitecture.BasePresenter;
 import com.nawin.androidmvparchitecture.BaseView;
 import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
+import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 
 import java.util.List;

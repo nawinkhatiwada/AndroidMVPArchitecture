@@ -2,6 +2,8 @@ package com.nawin.androidmvparchitecture;
 
 import android.content.Context;
 
+import javax.inject.Inject;
+
 /**
  * Created by brainovation on 6/15/17.
  */

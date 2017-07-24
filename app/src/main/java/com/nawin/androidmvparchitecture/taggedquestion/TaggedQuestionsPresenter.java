@@ -30,7 +30,7 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
     private Disposable disposable;
     private int offset;
 
-    public TaggedQuestionsPresenter(MvpComponent component, TaggedQuestionsContract.View view) {
+    TaggedQuestionsPresenter(MvpComponent component, TaggedQuestionsContract.View view) {
         this.component = component;
         this.view = view;
         view.setPresenter(this);
@@ -38,11 +38,11 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
 
     @Override
     public void start() {
+        view.showProgress();
         this.offset = 1;
         disposable = component.data().requestTags().subscribe(response -> {
             if (response != null) {
-                Tags tags = response.get(0);
-                view.showTaggedQuestionLoadSuccess(tags.getTags(), true);
+                view.showTaggedQuestionLoadSuccess(response.get(0).getTags(), true);
             } else {
                 view.showTaggedQuestionLoadError();
             }
@@ -62,7 +62,7 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
                     if (isEmpty(response))
                         view.showLoadMoreComplete();
                     else
-                        view.showLoadMoreError(component.context().getString(R.string.server_error));
+                        view.showMoreItems();
                 }, throwable -> view.showLoadMoreError(throwable.getMessage()));
 
     }

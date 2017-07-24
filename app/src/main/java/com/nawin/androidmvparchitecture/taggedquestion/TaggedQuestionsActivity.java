@@ -1,11 +1,14 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.data.model.Tags;
+import com.nawin.androidmvparchitecture.databinding.ActivityTaggedQuestionsBinding;
 
 import java.util.List;
 
@@ -15,13 +18,12 @@ import java.util.List;
 
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
-    RecyclerView rvTaggedQuestion;
+    ActivityTaggedQuestionsBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tagged_questions);
-        rvTaggedQuestion = (RecyclerView) findViewById(R.id.rvTaggedQuestions);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_tagged_questions);
         presenter = new TaggedQuestionsPresenter(component, this);
 
         presenter.start();
@@ -31,16 +33,6 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
     protected void onPause() {
         presenter.stop();
         super.onPause();
-    }
-
-    @Override
-    public void onSessionTimeout(String message) {
-
-    }
-
-    @Override
-    public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
-        this.presenter = presenter;
     }
 
     @Override
@@ -56,11 +48,11 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 //                adapter = (TaggedQuestionsAdapter) rvTaggedQuestion.getAdapter();
 //        if (adapter != null)
 //            adapter.detachLoadMore();
-        adapter = new TaggedQuestionsAdapter(rvTaggedQuestion, taggedQuestions, presenter);
+        adapter = new TaggedQuestionsAdapter(binding.rvTaggedQuestions, taggedQuestions, presenter);
 
 //        if (hasMoreItems)
 //            adapter.attachLoadMore(presenter);
-        this.rvTaggedQuestion.setAdapter(adapter);
+        this.binding.rvTaggedQuestions.setAdapter(adapter);
     }
 
     @Override
@@ -80,11 +72,23 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 
     @Override
     public void showLoadMoreComplete() {
-        ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadComplete();
+        ((TaggedQuestionsAdapter) this.binding.rvTaggedQuestions.getAdapter()).onLoadComplete();
     }
 
     @Override
     public void showLoadMoreError(String message) {
 
     }
+
+
+    @Override
+    public void onSessionTimeout(String message) {
+
+    }
+
+    @Override
+    public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
 }

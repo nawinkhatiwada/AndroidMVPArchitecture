@@ -10,6 +10,7 @@ import dagger.Provides;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -37,6 +38,7 @@ public class DataModule {
                 .baseUrl(DataModule.BASE_URL)
                 .client(client) //client is for logging the request and response
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
                 .build().create(RemoteRepo.class);
     }
 

@@ -24,6 +24,9 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+    dataBinding{
+        enabled = true;
+    }
 }
 
 dependencies {
@@ -45,9 +48,10 @@ dependencies {
 //    Dagger library
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
-//    Rx java and Android
+//    Rx java and RX android
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
 
     debugCompile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
     debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"

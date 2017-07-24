@@ -1,16 +1,11 @@
 package com.nawin.androidmvparchitecture.data;
 
-import android.content.Context;
-
-import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
 import com.nawin.androidmvparchitecture.data.model.News;
-import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
 import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
-import com.nawin.androidmvparchitecture.data.remote.DataModule;
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
 
 import java.util.HashMap;
@@ -24,8 +19,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by brainovation on 6/13/17.

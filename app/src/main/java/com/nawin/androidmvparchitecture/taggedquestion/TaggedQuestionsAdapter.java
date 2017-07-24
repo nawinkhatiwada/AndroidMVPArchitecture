@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.nawin.androidmvparchitecture.BR;
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.databinding.ViewHolderTaggedQuestionItemsBinding;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 
 import java.util.List;
@@ -17,7 +21,7 @@ import java.util.List;
  * Created by brainovation on 6/14/17.
  */
 
-class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
+public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
     private final List<String> items;
     private final TaggedQuestionSelectionListener listener;
 
@@ -36,25 +40,21 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
 
     @Override
     public TaggedQuestionsHolder onCreateViewHolder_(LayoutInflater inflater, ViewGroup parent, int viewType) {
-        return new TaggedQuestionsHolder(inflater.inflate(R.layout.view_holder_tagged_question_items, parent, false));
+        return new TaggedQuestionsHolder(DataBindingUtil.inflate(inflater, R.layout.view_holder_tagged_question_items, parent, false));
     }
 
     @Override
     public void onBindViewHolder_(final TaggedQuestionsHolder holder, final int position) {
 
-//        String taggedQuestions = items.get(position);
         if (items != null) {
-            holder.title.setText(items.get(position));
-//            holder.count.setText(taggedQuestions.getAnswerCount());
+            holder.binding.setTag(items.get(position));
         }
 
-        holder.rootView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (items != null)
-                    listener.onTaggedQuestionSelected(items.get(holder.getAdapterPosition()));
-            }
+        holder.binding.getRoot().setOnClickListener(v -> {
+            if (items != null)
+                listener.onTaggedQuestionSelected(items.get(holder.getAdapterPosition()));
         });
+        holder.binding.executePendingBindings();
     }
 
     @Override
@@ -73,14 +73,11 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {
-        private final TextView count, title;
-        private final CardView rootView;
+        private final ViewHolderTaggedQuestionItemsBinding binding;
 
-        TaggedQuestionsHolder(View itemView) {
-            super(itemView);
-            count = (TextView) itemView.findViewById(R.id.count);
-            title = (TextView) itemView.findViewById(R.id.title);
-            rootView = (CardView) itemView.findViewById(R.id.rootView);
+        TaggedQuestionsHolder(ViewHolderTaggedQuestionItemsBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }

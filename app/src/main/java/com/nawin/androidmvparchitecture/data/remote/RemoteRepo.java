@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -30,6 +31,6 @@ public interface RemoteRepo {
     Call<BaseResponse<List<News>>> requestNews(@Body Map<String, Object> params);
 
     @GET("/search?pagesize=25&order=desc&sort=activity&tagged=android-annotations&site=stackoverflow")
-    Call<BaseResponse<List<Tags>>> getTags();
+    Single<BaseResponse<List<Tags>>> getTags();
 
 }

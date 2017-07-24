@@ -2,6 +2,7 @@ package com.nawin.androidmvparchitecture.utils;
 
 import java.util.List;
 
+import io.reactivex.disposables.Disposable;
 import retrofit2.Call;
 
 /**
@@ -15,6 +16,15 @@ public class Commons {
             for (Call call : calls) {
                 if (call != null)
                     call.cancel();
+            }
+        }
+    }
+
+    public static void dispose(Disposable... disposables) {
+        if (disposables != null && disposables.length > 0) {
+            for (Disposable disposable : disposables) {
+                if (disposable != null)
+                    disposable.dispose();
             }
         }
     }

@@ -19,6 +19,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -70,9 +72,10 @@ public class Data {
         return call;
     }
 
-    public Call<BaseResponse<List<Tags>>> requestTags(Callback<BaseResponse<List<Tags>>> callback) {
-        Call<BaseResponse<List<Tags>>> call = remoteRepo.getTags();
-        call.enqueue(callback);
-        return call;
+    public Single<List<Tags>> requestTags() {
+        return remoteRepo.getTags()
+                .map(BaseResponse::getResponse)
+                .observeOn(AndroidSchedulers.mainThread());
+
     }
 }

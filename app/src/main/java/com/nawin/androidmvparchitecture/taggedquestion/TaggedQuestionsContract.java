@@ -26,7 +26,7 @@ public interface TaggedQuestionsContract {
 
         void showLoadMoreComplete();
 
-        void showLoadMoreError();
+        void showLoadMoreError(String message);
 
 
     }

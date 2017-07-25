@@ -41,8 +41,7 @@ https://msdn.microsoft.com/en-us/library/ff649571.aspx
 # Attribution
 Thank you [Dinesh Gajurel](https://github.com/dineshgajurel) for your wonderful contribution for developing the sample API that I have used in this repository. It was really helpful to have your input in this  project.
 
-I would also like to thank [Subhash Acharya](https://github.com/subhasha1) for your continuous guidance to improve the coding standard. I sincerely appreciate the time you spent reviewing my code and recommending me for achieving best result.
-I greatly appreciate the assistance you have provided me.
+Thank you [Subhash Acharya](https://github.com/subhasha1) for your continuous guidance and support to improve the coding standard. I sincerely appreciate the time you spent and assistance you have provided me by reviewing my code and recommending me for achieving the best result.
 
 --------------------------------------------------------------------------------------------
 

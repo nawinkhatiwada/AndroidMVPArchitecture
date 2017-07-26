@@ -6,7 +6,6 @@ import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
-import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 
 import retrofit2.Call;
 import retrofit2.Callback;

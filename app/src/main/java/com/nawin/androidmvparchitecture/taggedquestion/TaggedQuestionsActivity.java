@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
 
 import java.util.List;
 

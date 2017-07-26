@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
 import com.nawin.androidmvparchitecture.data.model.News;
+import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
@@ -55,13 +56,15 @@ public class Data {
         return call;
     }
 
-    public Call<BaseResponse<UserInfo>> requestLogin(final LoginRequest loginRequest, final Callback<BaseResponse<UserInfo>> callback) {
-
-        Call<BaseResponse<UserInfo>> call = remoteRepo.requestLogin(loginRequest);
+    public Call<BaseResponse<UserInfo>> requestLogin(String username, String password, final Callback<BaseResponse<UserInfo>> callback) {
+        HashMap<String, Object> params = new HashMap<>(2);
+        params.put("username",username);
+        params.put("password",password);
+        Call<BaseResponse<UserInfo>> call = remoteRepo.requestLogin(params);
         call.enqueue(new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
-                UserInfo userInfo = response.body() == null ? null : response.body().getResponse();
+                UserInfo userInfo = response.body().getResponse() == null ? null : response.body().getResponse();
                 if (userInfo != null) {
                     localRepo.setUserInfo(userInfo);
                     callback.onResponse(call, response);
@@ -78,4 +81,9 @@ public class Data {
         return call;
     }
 
+    public Call<BaseResponse<List<Tags>>> requestTags(Callback<BaseResponse<List<Tags>>> callback) {
+        Call<BaseResponse<List<Tags>>> call = remoteRepo.getTags();
+        call.enqueue(callback);
+        return call;
+    }
 }

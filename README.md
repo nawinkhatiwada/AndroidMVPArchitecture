@@ -1,5 +1,13 @@
 # Android MVP Architecture
-This repository consists of basic Android MVP architecture without using Dagger, RxJava, RxAndroid. In this repository, there is Retrofit, OkHttp for API purpose. AndroidMVPArchitecture is developed for beginners who are well known about basic Android application development and wants to use trending MVP Architecture in the project but are unknown about RxJava, RxAndroid and searching for ways to implement MVP without using RX and Dagger. The architecture is done in such a way that developers can easily implement **Rx**, after knowing about it, in this project.
+This repository has two branches **master** and **mvp_with_rx_and_dagger**. **Master** branch includes Android MVP architecture without using Dagger, RxJava, RxAndroid and branch **mvp_with_rx_and_dagger** includes Android MVP architecture using Dagger, RxJava, RxAndroid
+In this repository, there is Retrofit, OkHttp for API purpose. AndroidMVPArchitecture is developed for beginners who are well known about basic Android application development and wants to use trending MVP Architecture with or without **Rx and Dagger**. There is different type of implementation in different branches. You can simply clone the project and checkout to any above mentioned branches and learn both type of implementation.
+
+**To switch between the branches simply type:**<br/>
+i) from master to mvp_with_rx_and_dagger
+  >git checkout mvp_with_rx_and_dagger
+  
+ii)from mvp_with_rx_and_dagger to master
+  > git checkout master
 
   **MVC vs MVP**
   
@@ -18,10 +26,6 @@ The presenter acts upon the model and the view. It retrieves data from repositor
 
 **source:** https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
 
-**Feel free to submit the issues and suggestions for improving the coding standard** ![](https://github.com/nawinkhatiwada/AndroidMVPArchitecture/blob/master/app/src/main/res/drawable/happiness.png)
-
-
-
 # Important Links:
 https://medium.com/@cervonefrancesco/model-view-presenter-android-guidelines-94970b430ddf
 
@@ -32,4 +36,17 @@ https://code.tutsplus.com/tutorials/an-introduction-to-model-view-presenter-on-a
 https://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference
 
 https://msdn.microsoft.com/en-us/library/ff649571.aspx
+
+--------------------------------------------------------------------------------------------
+# Attribution
+Thank you [Dinesh Gajurel](https://github.com/dineshgajurel) for your wonderful contribution for developing the sample API that I have used in this repository. It was really helpful to have your input in this  project.
+
+Thank you [Subhash Acharya](https://github.com/subhasha1) for your continuous guidance and support to improve the coding standard. I sincerely appreciate the time you spent and assistance you have provided me by reviewing my code and recommending me for achieving the best result.
+
+--------------------------------------------------------------------------------------------
+
+**Feel free to submit any type of issues and suggestions for improving the coding standard**
+
+**Happy Coding!!!** ![](https://github.com/nawinkhatiwada/AndroidMVPArchitecture/blob/master/app/src/main/res/drawable/happiness.png)
+
 

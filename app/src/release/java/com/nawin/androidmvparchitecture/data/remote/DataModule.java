@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient;
  */
 
 public class DataModule {
-    public static final String BASE_URL = "http://api.stackexchange.com/2.2/";
+    public static final String BASE_URL = "https://androidragger.000webhostapp.com/mvp_android/api.php/";
 
     public static OkHttpClient getHttpClient() {
         return new OkHttpClient.Builder().build();

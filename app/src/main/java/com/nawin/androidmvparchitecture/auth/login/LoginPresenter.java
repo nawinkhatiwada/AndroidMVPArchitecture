@@ -18,12 +18,12 @@ import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
  * Created by brainovation on 6/13/17.
  */
 
-public class LoginPresenter implements LoginContract.Presenter {
+class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private Call<BaseResponse<UserInfo>> call;
     private final Context context;
 
-    public LoginPresenter(Context context, LoginContract.View view) {
+    LoginPresenter(Context context, LoginContract.View view) {
         this.view = view;
         this.context = context;
         view.setPresenter(this);
@@ -42,18 +42,15 @@ public class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void onLogin(String username, String password) {
         view.showLoginProgress();
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUserName(username);
-        loginRequest.setPassword(password);
-        call = Data.getInstance(context).requestLogin(loginRequest, new Callback<BaseResponse<UserInfo>>() {
+        call = Data.getInstance(context).requestLogin(username,password, new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
                 if (response.isSuccessful()) {
                     UserInfo userInfo = response.body().getResponse();
                     if (userInfo != null) {
-//                        view.showLoginSuccess(response.body().getStatusMessage());
+                       view.showLoginSuccess("Login Success");
                     } else {
-//                        view.showLoginError(response.body().getStatusMessage());
+                       view.showLoginError("Failure");
                     }
                 } else {
                     view.showLoginError(context.getString(R.string.server_error));

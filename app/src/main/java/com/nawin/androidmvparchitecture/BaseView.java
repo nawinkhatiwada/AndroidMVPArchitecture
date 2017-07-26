@@ -5,7 +5,7 @@ package com.nawin.androidmvparchitecture;
  */
 
 public interface BaseView<T extends BasePresenter> {
-    void onSessionTimeout(String message);
+//    void onSessionTimeout(String message);
 
     void setPresenter(T presenter);
 }

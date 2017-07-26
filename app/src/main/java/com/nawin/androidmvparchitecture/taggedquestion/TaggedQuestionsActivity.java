@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,11 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     private TaggedQuestionsContract.Presenter presenter;
     RecyclerView rvTaggedQuestion;
 
+    public static void start(Activity activity) {
+        Intent intent = new Intent(activity, TaggedQuestionsActivity.class);
+        activity.startActivity(intent);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +39,6 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     protected void onPause() {
         presenter.stop();
         super.onPause();
-    }
-
-    @Override
-    public void onSessionTimeout(String message) {
-
     }
 
     @Override

@@ -2,15 +2,10 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 
 
 import android.content.Context;
-import android.nfc.Tag;
 import android.util.Log;
 
 import com.nawin.androidmvparchitecture.data.Data;
-import com.nawin.androidmvparchitecture.data.local.LocalRepo;
-import com.nawin.androidmvparchitecture.data.model.News;
-import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
 import com.nawin.androidmvparchitecture.data.model.Tags;
-import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 
 import java.util.List;
@@ -46,8 +41,8 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
                 if (response.isSuccessful()) {
                     BaseResponse<List<Tags>> taggedQuestions = response.body();
                     if (taggedQuestions != null) {
-//                        offset += taggedQuestions.getResponse().getTags().size();
-                        view.showTaggedQuestionLoadSuccess(taggedQuestions.getResponse().get(0).getTags(), true); /* false value can be changed to rowTotal > offset */
+//                        offset += taggedQuestions.getItems().getTags().size();
+                        view.showTaggedQuestionLoadSuccess(taggedQuestions.getItems().get(0).getTags(), true); /* false value can be changed to rowTotal > offset */
                     } else {
                         view.showTaggedQuestionLoadError();
                     }

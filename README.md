@@ -37,6 +37,13 @@ https://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-di
 
 https://msdn.microsoft.com/en-us/library/ff649571.aspx
 
+--------------------------------------------------------------------------------------------
+# Attribution
+Thank you [Dinesh Gajurel](https://github.com/dineshgajurel) for your wonderful contribution for developing the sample API that I have used in this repository. It was really helpful to have your input in this  project.
+
+Thank you [Subhash Acharya](https://github.com/subhasha1) for your continuous guidance and support to improve the coding standard. I sincerely appreciate the time you spent and assistance you have provided me by reviewing my code and recommending me for achieving the best result.
+
+--------------------------------------------------------------------------------------------
 
 **Feel free to submit any type of issues and suggestions for improving the coding standard**
 

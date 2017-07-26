@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public class DataModule {
-    public static final String BASE_URL = "http://api.stackexchange.com/2.2/";
+    public static final String BASE_URL = "https://androidragger.000webhostapp.com/mvp_android/api.php/";
 
     @Provides
     @Singleton

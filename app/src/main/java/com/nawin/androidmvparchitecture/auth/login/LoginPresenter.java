@@ -6,7 +6,6 @@ import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
-import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +44,7 @@ class LoginPresenter implements LoginContract.Presenter {
         call = Data.getInstance(context).requestLogin(username,password, new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
-                if (response.isSuccessful()) {
+                if (response != null && response.isSuccessful()) {
                     UserInfo userInfo = response.body().getResponse();
                     if (userInfo != null) {
                        view.showLoginSuccess("Login Success");

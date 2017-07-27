@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
 import com.nawin.androidmvparchitecture.utils.Commons;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
@@ -23,6 +22,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         presenter = new LoginPresenter(this, this);
+
          etUsername = (EditText) findViewById(R.id.etUsername);
          etPassword = (EditText) findViewById(R.id.etPassword);
         Button btnLogin = (Button) findViewById(R.id.btnLogin);

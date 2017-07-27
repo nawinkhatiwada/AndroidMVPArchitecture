@@ -4,11 +4,9 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.local.LocalRepo;
-import com.nawin.androidmvparchitecture.data.model.News;
 import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
-import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 import com.nawin.androidmvparchitecture.data.remote.DataModule;
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
 
@@ -46,14 +44,6 @@ public class Data {
     private Data(LocalRepo localRepo, RemoteRepo remoteRepo) {
         this.localRepo = localRepo;
         this.remoteRepo = remoteRepo;
-    }
-
-    public Call<BaseResponse<List<News>>> requestNews(int userId, Callback<BaseResponse<List<News>>> callback) {
-        HashMap<String, Object> params = new HashMap<>();
-        params.put("userId", userId);
-        Call<BaseResponse<List<News>>> call = remoteRepo.requestNews(params);
-        call.enqueue(callback);
-        return call;
     }
 
     public Call<BaseResponse<UserInfo>> requestLogin(String username, String password, final Callback<BaseResponse<UserInfo>> callback) {

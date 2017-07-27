@@ -1,6 +1,5 @@
 package com.nawin.androidmvparchitecture.data.remote;
 
-import com.nawin.androidmvparchitecture.data.model.News;
 import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;

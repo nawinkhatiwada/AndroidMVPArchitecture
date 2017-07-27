@@ -1,8 +1,12 @@
 package com.nawin.androidmvparchitecture.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 
 import java.util.List;
 
@@ -14,15 +18,6 @@ import retrofit2.Call;
  */
 
 public class Commons {
-
-    public static void cancel(Call... calls) {
-        if (calls != null && calls.length > 0) {
-            for (Call call : calls) {
-                if (call != null)
-                    call.cancel();
-            }
-        }
-    }
 
     public static void dispose(Disposable... disposables) {
         if (disposables != null && disposables.length > 0) {
@@ -43,4 +38,15 @@ public class Commons {
         return networkInfo != null && (networkInfo.isConnected());
     }
 
+    public static ProgressDialog showLoadingDialog(Context context, String message) {
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage(message);
+        progressDialog.show();
+        return progressDialog;
+    }
+
+    public static ProgressDialog showLoadingDialog(Context context) {
+        return showLoadingDialog(context, context.getString(R.string.loading));
+    }
 }

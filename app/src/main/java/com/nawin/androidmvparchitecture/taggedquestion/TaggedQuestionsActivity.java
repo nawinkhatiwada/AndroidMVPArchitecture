@@ -16,7 +16,7 @@ import java.util.List;
 
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
-    ActivityTaggedQuestionsBinding binding;
+   private ActivityTaggedQuestionsBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

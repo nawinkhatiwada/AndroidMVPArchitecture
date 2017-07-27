@@ -22,5 +22,4 @@ public interface RemoteRepo {
 
     @POST("?recentTags")
     Single<BaseResponse<List<Tags>>> getTags();
-
 }

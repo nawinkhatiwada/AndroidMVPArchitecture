@@ -1,16 +1,11 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.nawin.androidmvparchitecture.BR;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.databinding.ViewHolderTaggedQuestionItemsBinding;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;

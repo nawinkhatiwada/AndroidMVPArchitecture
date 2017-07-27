@@ -17,7 +17,7 @@ import retrofit2.http.POST;
 
 public interface RemoteRepo {
 
-    @POST("/login")
+    @POST("?login")
     Single<BaseResponse<UserInfo>> requestLogin(@Body Map<String,Object> params);
 
     @POST("?recentTags")

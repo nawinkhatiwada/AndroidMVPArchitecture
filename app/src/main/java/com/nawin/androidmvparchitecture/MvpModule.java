@@ -11,7 +11,7 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * Created by brainovation on 7/20/17.
+ * Created by nawin on 7/20/17.
  */
 @Module
 public class MvpModule {

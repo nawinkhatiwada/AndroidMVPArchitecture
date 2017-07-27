@@ -21,7 +21,7 @@ import static com.nawin.androidmvparchitecture.utils.Commons.dispose;
 import static com.nawin.androidmvparchitecture.utils.Commons.isEmpty;
 
 /**
- * Created by brainovation on 6/14/17.
+ * Created by nawin on 6/14/17.
  */
 
 public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {

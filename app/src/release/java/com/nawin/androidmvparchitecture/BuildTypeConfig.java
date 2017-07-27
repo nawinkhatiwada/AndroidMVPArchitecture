@@ -5,7 +5,7 @@ import android.content.Context;
 import javax.inject.Inject;
 
 /**
- * Created by brainovation on 6/15/17.
+ * Created by nawin on 6/15/17.
  */
 
 public class BuildTypeConfig {

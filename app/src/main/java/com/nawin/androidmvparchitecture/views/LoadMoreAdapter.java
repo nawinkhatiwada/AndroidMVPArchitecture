@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.nawin.androidmvparchitecture.R;
 
 /**
- * Created by brainovation on 7/12/17.
+ * Created by nawin on 7/12/17.
  */
 
 public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

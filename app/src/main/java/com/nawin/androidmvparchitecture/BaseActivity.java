@@ -9,7 +9,7 @@ import com.nawin.androidmvparchitecture.data.Data;
 import javax.inject.Inject;
 
 /**
- * Created by brainovation on 7/20/17.
+ * Created by nawin on 7/20/17.
  */
 
 public class BaseActivity extends AppCompatActivity{

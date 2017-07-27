@@ -9,7 +9,7 @@ import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 import java.util.List;
 
 /**
- * Created by brainovation on 6/14/17.
+ * Created by nawin on 6/14/17.
  */
 
 public interface TaggedQuestionsContract {

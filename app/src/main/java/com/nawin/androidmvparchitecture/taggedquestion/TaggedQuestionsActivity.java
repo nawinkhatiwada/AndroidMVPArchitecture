@@ -3,17 +3,15 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.databinding.ActivityTaggedQuestionsBinding;
 
 import java.util.List;
 
 /**
- * Created by brainovation on 6/14/17.
+ * Created by nawin on 6/14/17.
  */
 
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
@@ -25,7 +23,11 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_tagged_questions);
         presenter = new TaggedQuestionsPresenter(component, this);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         presenter.start();
     }
 
@@ -77,12 +79,6 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 
     @Override
     public void showLoadMoreError(String message) {
-
-    }
-
-
-    @Override
-    public void onSessionTimeout(String message) {
 
     }
 

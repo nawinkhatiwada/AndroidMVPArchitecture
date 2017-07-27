@@ -1,7 +1,6 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
@@ -21,11 +20,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     protected void onPause() {
         presenter.stop();
         super.onPause();
-    }
-
-    @Override
-    public void onSessionTimeout(String message) {
-
     }
 
     @Override

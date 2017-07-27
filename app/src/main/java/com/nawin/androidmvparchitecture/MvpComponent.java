@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 /**
- * Created by brainovation on 7/20/17.
+ * Created by nawin on 7/20/17.
  */
 @Component(modules = {MvpModule.class, DataModule.class})
 @Singleton

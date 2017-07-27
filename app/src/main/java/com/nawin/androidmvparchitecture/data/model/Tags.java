@@ -3,7 +3,7 @@ package com.nawin.androidmvparchitecture.data.model;
 import java.util.List;
 
 /**
- * Created by brainovation on 7/19/17.
+ * Created by nawin on 7/19/17.
  */
 
 public class Tags {

@@ -49,7 +49,7 @@ class LoginPresenter implements LoginContract.Presenter {
                     if (userInfo != null) {
                        view.showLoginSuccess("Login Success");
                     } else {
-                       view.showLoginError("Failure");
+                       view.showLoginError(""+response.body().getStatusCode());
                     }
                 } else {
                     view.showLoginError(context.getString(R.string.server_error));

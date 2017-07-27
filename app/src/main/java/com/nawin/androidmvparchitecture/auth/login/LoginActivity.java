@@ -69,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void showLoginError(String message) {
         progressDialog.dismiss();
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

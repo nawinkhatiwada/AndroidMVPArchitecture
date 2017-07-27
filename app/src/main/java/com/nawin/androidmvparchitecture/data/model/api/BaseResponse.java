@@ -9,6 +9,7 @@ public class BaseResponse<T> {
 //    private int status;
 //    private String statusMessage;
     private T items;
+    private T response;
 
 //    public int getStatus() {
 //        return status;
@@ -27,10 +28,18 @@ public class BaseResponse<T> {
 //    }
 
     public T getResponse() {
-        return items;
+        return response;
     }
 
     public void setResponse(T response) {
-        this.items = response;
+        this.response = response;
+    }
+
+    public T getItems() {
+        return items;
+    }
+
+    public void setItems(T items) {
+        this.items = items;
     }
 }

@@ -7,6 +7,7 @@ import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
+import com.nawin.androidmvparchitecture.utils.NonNullMapper;
 
 import java.util.HashMap;
 import java.util.List;
@@ -63,6 +64,20 @@ public class Data {
             }
         });
         return call;
+    }
+
+
+    public Single<UserInfo> requestLogin(String username, String password) {
+        HashMap<String, Object> params = new HashMap<>(2);
+        params.put("username", username);
+        params.put("password", password);
+        return remoteRepo.requestLogin(params)
+                .flatMap(new NonNullMapper<>())
+                .doOnSuccess(userInfo -> {
+                    if (userInfo != null)
+                        localRepo.setUserInfo(userInfo);
+
+                }).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Single<List<Tags>> requestTags() {

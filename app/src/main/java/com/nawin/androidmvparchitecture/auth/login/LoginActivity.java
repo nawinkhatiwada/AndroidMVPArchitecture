@@ -43,6 +43,11 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
+    public void showNetworkNotAvailableError(String message) {
+
+    }
+
+    @Override
     public void setPresenter(LoginContract.Presenter presenter) {
         this.presenter = presenter;
     }

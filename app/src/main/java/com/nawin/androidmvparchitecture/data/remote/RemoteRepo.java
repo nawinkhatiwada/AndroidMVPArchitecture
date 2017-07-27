@@ -23,6 +23,10 @@ public interface RemoteRepo {
     @POST("/login")
     Call<BaseResponse<UserInfo>> requestLogin(@Body LoginRequest loginRequest);
 
+
+    @POST("/login")
+    Single<BaseResponse<UserInfo>> requestLogin(@Body Map<String,Object> params);
+
     @POST("/news")
     Call<BaseResponse<List<News>>> requestNews(@Body Map<String, Object> params);
 

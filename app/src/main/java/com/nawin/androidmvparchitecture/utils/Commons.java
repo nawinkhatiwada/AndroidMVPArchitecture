@@ -6,12 +6,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 
 import java.util.List;
 
 import io.reactivex.disposables.Disposable;
-import retrofit2.Call;
 
 /**
  * Created by nawin on 6/13/17.

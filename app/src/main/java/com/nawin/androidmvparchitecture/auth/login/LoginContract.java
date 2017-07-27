@@ -5,7 +5,7 @@ import com.nawin.androidmvparchitecture.BaseView;
 import com.nawin.androidmvparchitecture.data.model.api.LoginRequest;
 
 /**
- * Created by brainovation on 6/13/17.
+ * Created by nawin on 6/13/17.
  */
 
 interface LoginContract {

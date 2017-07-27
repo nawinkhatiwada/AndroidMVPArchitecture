@@ -3,7 +3,7 @@ package com.nawin.androidmvparchitecture;
 import android.app.Application;
 
 /**
- * Created by brainovation on 6/15/17.
+ * Created by nawin on 6/15/17.
  */
 
 public class MVPApp extends Application {

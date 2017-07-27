@@ -11,7 +11,7 @@ import com.google.gson.Gson;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 
 /**
- * Created by brainovation on 6/13/17.
+ * Created by nawin on 6/13/17.
  */
 
 public class LocalRepo {

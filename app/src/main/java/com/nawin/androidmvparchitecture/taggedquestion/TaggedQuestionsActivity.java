@@ -13,7 +13,7 @@ import com.nawin.androidmvparchitecture.data.model.TaggedQuestions;
 import java.util.List;
 
 /**
- * Created by brainovation on 6/14/17.
+ * Created by nawin on 6/14/17.
  */
 
 public class TaggedQuestionsActivity extends AppCompatActivity implements TaggedQuestionsContract.View {

@@ -3,7 +3,7 @@ package com.nawin.androidmvparchitecture.data.model.api;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by brainovation on 6/14/17.
+ * Created by nawin on 6/14/17.
  */
 
 public class BaseResponse<T> {

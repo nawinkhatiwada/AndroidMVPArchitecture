@@ -3,7 +3,7 @@ package com.nawin.androidmvparchitecture.data.remote;
 import okhttp3.OkHttpClient;
 
 /**
- * Created by brainovation on 6/13/17.
+ * Created by nawin on 6/13/17.
  */
 
 public class DataModule {

@@ -15,7 +15,7 @@ import retrofit2.Response;
 import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
 
 /**
- * Created by brainovation on 6/13/17.
+ * Created by nawin on 6/13/17.
  */
 
 class LoginPresenter implements LoginContract.Presenter {

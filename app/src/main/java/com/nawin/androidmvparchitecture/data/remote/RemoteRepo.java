@@ -18,7 +18,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Url;
 
 /**
- * Created by brainovation on 6/13/17.
+ * Created by nawin on 6/13/17.
  */
 
 public interface RemoteRepo {

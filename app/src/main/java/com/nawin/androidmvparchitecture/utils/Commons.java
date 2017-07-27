@@ -2,6 +2,8 @@ package com.nawin.androidmvparchitecture.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import retrofit2.Call;
 
@@ -31,5 +33,11 @@ public class Commons {
     //Use this method for showing Progress dialog with default message
     public static ProgressDialog showLoadingDialog(Context context) {
         return showLoadingDialog(context, "Please wait...");
+    }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        return networkInfo != null && (networkInfo.isConnected());
     }
 }

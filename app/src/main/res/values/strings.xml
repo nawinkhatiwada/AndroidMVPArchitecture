@@ -9,4 +9,5 @@
     <string name="verifying_login">Verifying username and password...</string>
     <string name="empty_field_msg">Field can\'t be empty</string>
     <string name="login_success">Login Success</string>
+    <string name="network_not_available_error">Make sure you are connected to internet</string>
 </resources>

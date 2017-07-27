@@ -15,6 +15,8 @@ interface LoginContract {
         void showLoginSuccess(String message);
 
         void showLoginError(String message);
+
+        void showNetworkNotAvailableError();
     }
 
     interface Presenter extends BasePresenter {

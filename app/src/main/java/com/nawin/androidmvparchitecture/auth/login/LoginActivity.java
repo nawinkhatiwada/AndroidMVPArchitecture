@@ -15,7 +15,7 @@ import com.nawin.androidmvparchitecture.utils.Commons;
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
     private LoginContract.Presenter presenter;
     private ProgressDialog progressDialog;
-    private EditText etUsername,etPassword;
+    private EditText etUsername, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +23,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         setContentView(R.layout.activity_login);
         presenter = new LoginPresenter(this, this);
 
-         etUsername = (EditText) findViewById(R.id.etUsername);
-         etPassword = (EditText) findViewById(R.id.etPassword);
+        etUsername = (EditText) findViewById(R.id.etUsername);
+        etPassword = (EditText) findViewById(R.id.etPassword);
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         progressDialog.dismiss();
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void showNetworkNotAvailableError() {
+        Toast.makeText(this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
     }
 
     @Override

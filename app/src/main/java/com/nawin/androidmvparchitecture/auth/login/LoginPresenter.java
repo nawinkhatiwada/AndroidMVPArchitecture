@@ -7,11 +7,14 @@ import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 
+import java.io.IOException;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
+import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
 
 /**
  * Created by nawin on 6/13/17.
@@ -40,16 +43,21 @@ class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void onLogin(String username, String password) {
+
+        if(!isNetworkAvailable(context)){
+            view.showNetworkNotAvailableError();
+            return;
+        }
         view.showLoginProgress();
-        call = Data.getInstance(context).requestLogin(username,password, new Callback<BaseResponse<UserInfo>>() {
+        call = Data.getInstance(context).requestLogin(username, password, new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
                 if (response != null && response.isSuccessful()) {
                     UserInfo userInfo = response.body().getResponse();
                     if (userInfo != null) {
-                       view.showLoginSuccess("Login Success");
+                        view.showLoginSuccess("Login Success");
                     } else {
-                       view.showLoginError(""+response.body().getStatusCode());
+                        view.showLoginError("" + response.body().getStatusCode());
                     }
                 } else {
                     view.showLoginError(context.getString(R.string.server_error));
@@ -58,7 +66,10 @@ class LoginPresenter implements LoginContract.Presenter {
 
             @Override
             public void onFailure(Call<BaseResponse<UserInfo>> call, Throwable t) {
-                view.showLoginError(t.getMessage());
+                if (t instanceof IOException)
+                    view.showLoginError("No Network Available");
+                else
+                    view.showLoginError("Server Error");
             }
         });
     }

@@ -16,9 +16,12 @@ import retrofit2.http.POST;
  */
 
 public interface RemoteRepo {
+    /* In this Interface there is only POST Request usage. Refer to Retrofit's
+    *  Documentation for other Request Types such as PUT, DELETE, GET , etc.
+    */
 
     @POST("?login")
-    Single<BaseResponse<UserInfo>> requestLogin(@Body Map<String,Object> params);
+    Single<BaseResponse<UserInfo>> requestLogin(@Body Map<String, Object> params);
 
     @POST("?recentTags")
     Single<BaseResponse<List<Tags>>> getTags();

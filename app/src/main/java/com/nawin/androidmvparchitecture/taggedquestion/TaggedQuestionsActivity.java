@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +19,11 @@ import java.util.List;
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
    private ActivityTaggedQuestionsBinding binding;
+
+    public static void start(Activity activity) {
+        Intent intent = new Intent(activity, TaggedQuestionsActivity.class);
+        activity.startActivity(intent);
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

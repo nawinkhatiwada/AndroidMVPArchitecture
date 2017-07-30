@@ -54,7 +54,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void showLoginSuccess(String message) {
         progressDialog.dismiss();
-/       TaggedQuestionsActivity.start(this);
+      TaggedQuestionsActivity.start(this);
         Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
     }
 

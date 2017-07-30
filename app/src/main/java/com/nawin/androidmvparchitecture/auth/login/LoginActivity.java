@@ -8,9 +8,10 @@ import android.widget.Toast;
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.databinding.ActivityLoginBinding;
-import com.nawin.androidmvparchitecture.utils.Commons;
+import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
 
 import static android.text.TextUtils.isEmpty;
+import static com.nawin.androidmvparchitecture.utils.Commons.showLoadingDialog;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     private LoginContract.Presenter presenter;
@@ -47,13 +48,13 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void showLoginProgress() {
-        progressDialog = Commons.showLoadingDialog(this, getString(R.string.verifying_login));
+        progressDialog = showLoadingDialog(this, getString(R.string.verifying_login));
     }
 
     @Override
     public void showLoginSuccess(String message) {
         progressDialog.dismiss();
-//        TaggedQuestionsActivity.start(this);
+/       TaggedQuestionsActivity.start(this);
         Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
     }
 

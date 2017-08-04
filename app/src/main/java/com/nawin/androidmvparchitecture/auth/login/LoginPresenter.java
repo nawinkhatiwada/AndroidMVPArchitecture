@@ -1,6 +1,7 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
 import com.nawin.androidmvparchitecture.MvpComponent;
+import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
 
 import java.io.IOException;
 
@@ -49,6 +50,9 @@ class LoginPresenter implements LoginContract.Presenter {
                         view.showLoginError("Server Error");
 
                 }, throwable -> {
+                    if (throwable instanceof FailedResponseException) {
+                        view.showLoginError(throwable.getMessage());
+                    }
                     if (throwable instanceof IOException)
                         view.showNetworkNotAvailableError();
                     else

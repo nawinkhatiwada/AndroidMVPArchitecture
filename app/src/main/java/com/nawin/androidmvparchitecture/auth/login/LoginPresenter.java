@@ -44,7 +44,7 @@ class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void onLogin(String username, String password) {
 
-        if(!isNetworkAvailable(context)){
+        if (!isNetworkAvailable(context)) {
             view.showNetworkNotAvailableError();
             return;
         }
@@ -57,7 +57,7 @@ class LoginPresenter implements LoginContract.Presenter {
                     if (userInfo != null) {
                         view.showLoginSuccess("Login Success");
                     } else {
-                        view.showLoginError("" + response.body().getStatusCode());
+                        view.showLoginError(response.body().getStatusMessage());
                     }
                 } else {
                     view.showLoginError(context.getString(R.string.server_error));
@@ -66,10 +66,7 @@ class LoginPresenter implements LoginContract.Presenter {
 
             @Override
             public void onFailure(Call<BaseResponse<UserInfo>> call, Throwable t) {
-                if (t instanceof IOException)
-                    view.showLoginError("No Network Available");
-                else
-                    view.showLoginError("Server Error");
+                view.showLoginError(context.getString(R.string.server_error));
             }
         });
     }

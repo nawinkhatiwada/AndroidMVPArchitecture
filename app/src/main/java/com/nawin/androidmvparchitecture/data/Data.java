@@ -48,16 +48,18 @@ public class Data {
 
     public Call<BaseResponse<UserInfo>> requestLogin(String username, String password, final Callback<BaseResponse<UserInfo>> callback) {
         HashMap<String, Object> params = new HashMap<>(2);
-        params.put("username",username);
-        params.put("password",password);
+        params.put("username", username);
+        params.put("password", password);
         Call<BaseResponse<UserInfo>> call = remoteRepo.requestLogin(params);
         call.enqueue(new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
-                UserInfo userInfo = response.body().getResponse() == null ? null : response.body().getResponse();
-                if (userInfo != null) {
-                    localRepo.setUserInfo(userInfo);
+                if (response != null && response.isSuccessful()) {
                     callback.onResponse(call, response);
+                    UserInfo userInfo = response.body().getResponse() == null ? null : response.body().getResponse();
+                    if (userInfo != null) {
+                        localRepo.setUserInfo(userInfo);
+                    }
                 } else {
                     callback.onFailure(call, new Exception());
                 }

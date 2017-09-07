@@ -26,7 +26,6 @@ public class BaseResponse<T> {
         this.response = response;
     }
 
-
     public String getStatusMessage() {
         return statusMessage;
     }

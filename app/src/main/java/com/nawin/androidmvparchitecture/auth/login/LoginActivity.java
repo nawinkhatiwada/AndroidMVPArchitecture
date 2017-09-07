@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
 import com.nawin.androidmvparchitecture.utils.Commons;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
@@ -62,20 +61,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showLoginSuccess(String message) {
-        progressDialog.dismiss();
-       TaggedQuestionsActivity.start(this);
+        dismissDialog();
+//       TaggedQuestionsActivity.start(this);
         Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showLoginError(String message) {
-        progressDialog.dismiss();
+        dismissDialog();
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void showNetworkNotAvailableError() {
+        dismissDialog();
         Toast.makeText(this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
     }
 
@@ -84,4 +84,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         this.presenter = presenter;
     }
 
+    private void dismissDialog() {
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
+    }
 }

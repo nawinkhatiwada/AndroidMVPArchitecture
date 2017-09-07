@@ -42,7 +42,7 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
                     BaseResponse<List<Tags>> taggedQuestions = response.body();
                     if (taggedQuestions != null) {
 //                        offset += taggedQuestions.getItems().getTags().size();
-                        view.showTaggedQuestionLoadSuccess(taggedQuestions.getItems().get(0).getTags(), true); /* false value can be changed to rowTotal > offset */
+//                        view.showTaggedQuestionLoadSuccess(taggedQuestions.getItems().get(0).getTags(), true); /* false value can be changed to rowTotal > offset */
                     } else {
                         view.showTaggedQuestionLoadError();
                     }

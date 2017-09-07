@@ -1,15 +1,12 @@
 package com.nawin.androidmvparchitecture.data.model.api;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by nawin on 6/14/17.
  */
 
 public class BaseResponse<T> {
 
-    private T items;
-    @SerializedName("status_code")
+    private String statusMessage;
     private int statusCode;
     private T response;
 
@@ -28,12 +25,13 @@ public class BaseResponse<T> {
     public void setResponse(T response) {
         this.response = response;
     }
-    public T getItems() {
-        return items;
+
+
+    public String getStatusMessage() {
+        return statusMessage;
     }
 
-    public void setItems(T items) {
-        this.items = items;
+    public void setStatusMessage(String statusMessage) {
+        this.statusMessage = statusMessage;
     }
-
 }

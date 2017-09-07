@@ -32,13 +32,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             public void onClick(View v) {
                 String username = etUsername.getText().toString();
                 if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(LoginActivity.this, getString(R.string.empty_field_msg), Toast.LENGTH_SHORT).show();
+                    etUsername.setError(getString(R.string.empty_field_msg));
                     return;
                 }
 
                 String password = etPassword.getText().toString();
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(LoginActivity.this, getString(R.string.empty_field_msg), Toast.LENGTH_SHORT).show();
+                    etPassword.setError(getString(R.string.empty_field_msg));
                     return;
                 }
                 presenter.onLogin(username, password);

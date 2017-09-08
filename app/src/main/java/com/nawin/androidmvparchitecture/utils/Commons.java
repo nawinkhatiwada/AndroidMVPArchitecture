@@ -5,6 +5,8 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import java.util.List;
+
 import retrofit2.Call;
 
 /**
@@ -12,7 +14,7 @@ import retrofit2.Call;
  */
 
 public class Commons {
-//Used to cancel Retrofit's call or calls
+    //Used to cancel Retrofit's call or calls
     public static void cancel(Call... calls) {
         if (calls != null && calls.length > 0) {
             for (Call call : calls) {
@@ -21,7 +23,8 @@ public class Commons {
             }
         }
     }
-//Use this method for showing Progress dialog with Custom message passed from view
+
+    //Use this method for showing Progress dialog with Custom message passed from view
     public static ProgressDialog showLoadingDialog(Context context, String message) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage(message);
@@ -39,5 +42,9 @@ public class Commons {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         return networkInfo != null && (networkInfo.isConnected());
+    }
+
+    public static boolean isEmpty(List list) {
+        return list == null || list.isEmpty();
     }
 }

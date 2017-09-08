@@ -2,9 +2,9 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import com.nawin.androidmvparchitecture.data.Data;
+import com.nawin.androidmvparchitecture.data.model.TagItems;
 import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 
@@ -15,18 +15,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
+import static com.nawin.androidmvparchitecture.utils.Commons.isEmpty;
 
 /**
  * Created by nawin on 6/14/17.
  */
 
-public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
+class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
+    private final int LIMIT = 10;
     private Context context;
     private TaggedQuestionsContract.View view;
-    private Call<BaseResponse<List<Tags>>> call;
+    private Call<BaseResponse<Tags>> call;
     private int offset;
 
-    public TaggedQuestionsPresenter(Context context, TaggedQuestionsContract.View view) {
+    TaggedQuestionsPresenter(Context context, TaggedQuestionsContract.View view) {
         this.context = context;
         this.view = view;
         view.setPresenter(this);
@@ -34,31 +36,30 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
 
     @Override
     public void start() {
-        this.offset = 1;
-        call = Data.getInstance(context).requestTags(new Callback<BaseResponse<List<Tags>>>() {
+        this.offset = 0;
+        call = Data.getInstance(context).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
             @Override
-            public void onResponse(Call<BaseResponse<List<Tags>>> call, Response<BaseResponse<List<Tags>>> response) {
-                if (response.isSuccessful()) {
-                    BaseResponse<List<Tags>> taggedQuestions = response.body();
-                    if (taggedQuestions != null) {
-//                        offset += taggedQuestions.getItems().getTags().size();
-//                        view.showTaggedQuestionLoadSuccess(taggedQuestions.getItems().get(0).getTags(), true); /* false value can be changed to rowTotal > offset */
+            public void onResponse(Call<BaseResponse<Tags>> call, Response<BaseResponse<Tags>> response) {
+                if (response != null && response.isSuccessful()) {
+                    int itemCount = response.body().getResponse().getItemCount();
+                    List<TagItems> items = response.body().getResponse().getItems();
+                    if (itemCount > 0 && !isEmpty(items)) {
+                        final int count = items.size();
+                        offset += count;
+                        view.showTagsLoadSuccess(items, itemCount > offset);
                     } else {
-                        view.showTaggedQuestionLoadError();
+                        view.showEmptyTags();
                     }
                 } else {
-                    view.showTaggedQuestionLoadError();
+                    view.showTagsLoadError();
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse<List<Tags>>> call, Throwable t) {
-                view.showTaggedQuestionLoadError();
-                Log.d("errors", t.getMessage());
-
+            public void onFailure(Call<BaseResponse<Tags>> call, Throwable t) {
+                view.showTagsLoadError();
             }
         });
-
     }
 
     @Override
@@ -68,11 +69,35 @@ public class TaggedQuestionsPresenter implements TaggedQuestionsContract.Present
 
     @Override
     public void onLoadMore() {
+        view.showLoadMoreProgress();
+        call = Data.getInstance(context).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
 
+            @Override
+            public void onResponse(Call<BaseResponse<Tags>> call, Response<BaseResponse<Tags>> response) {
+                if (response != null && response.isSuccessful()) {
+                    int itemCount = response.body().getResponse().getItemCount();
+                    List<TagItems> items = response.body().getResponse().getItems();
+                    if (itemCount > 0 && !isEmpty(items)) {
+                        final int count = items.size();
+                        offset += count;
+                        view.showMoreTags(items, itemCount > offset);
+                    } else {
+                        view.onLoadComplete();
+                    }
+                } else {
+                    view.showLoadMoreError();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse<Tags>> call, Throwable t) {
+                view.showLoadMoreError();
+            }
+        });
     }
 
     @Override
-    public void onTaggedQuestionSelected(String items) {
+    public void onTaggedQuestionSelected(List<TagItems> items) {
 
     }
 }

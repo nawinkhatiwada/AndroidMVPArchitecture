@@ -73,7 +73,9 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
 
     public abstract void onBindViewHolder_(VH holder, int position);
 
-    public abstract int getItemViewType_(int position);
+    public int getItemViewType_(int position) {
+        return 0;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -116,8 +118,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
 
         if (showLoading)
             notifyItemChanged(getItemCount_() - size);
-
-        notifyItemRangeChanged(from, size);
+        notifyItemRangeInserted(from, size);
 
     }
 

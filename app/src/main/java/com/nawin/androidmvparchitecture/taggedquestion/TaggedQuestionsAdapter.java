@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.data.model.TagItems;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 
 import java.util.List;
@@ -18,13 +19,13 @@ import java.util.List;
  */
 
 class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
-    private final List<String> items;
+    private final List<TagItems> items;
     private final TaggedQuestionSelectionListener listener;
 
     TaggedQuestionsAdapter(@NonNull RecyclerView recyclerView,
-                           List<String> taggedQuestions,
+                           List<TagItems> taggedQuestions,
                            TaggedQuestionSelectionListener listener) {
-        super(recyclerView, true);
+        super(recyclerView);
         this.items = taggedQuestions;
         this.listener = listener;
     }
@@ -44,7 +45,7 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
 
 //        String taggedQuestions = items.get(position);
         if (items != null) {
-            holder.title.setText(items.get(position));
+            holder.title.setText(items.get(position).getTitle());
 //            holder.count.setText(taggedQuestions.getAnswerCount());
         }
 
@@ -52,24 +53,19 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
             @Override
             public void onClick(View v) {
                 if (items != null)
-                    listener.onTaggedQuestionSelected(items.get(holder.getAdapterPosition()));
+                    listener.onTaggedQuestionSelected(items);
             }
         });
     }
 
-    @Override
-    public int getItemViewType_(int position) {
-        return items.size();
-    }
-
-    public void addMoreItems(List<String> items, boolean hasMoreItems) {
+    public void addMoreItems(List<TagItems> items, boolean hasMoreItems) {
         final int count = this.items.size();
         this.items.addAll(items);
         onItemsAdded(count, items.size(), hasMoreItems);
     }
 
     interface TaggedQuestionSelectionListener {
-        void onTaggedQuestionSelected(String items);
+        void onTaggedQuestionSelected(List<TagItems> items);
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {

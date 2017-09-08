@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 import com.nawin.androidmvparchitecture.data.Data;
+import com.nawin.androidmvparchitecture.data.model.TagItems;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tagged_questions);
         boolean isLoggedIn = Data.getInstance(this).isLoggedIn();
-        if (!isLoggedIn){
+        if (!isLoggedIn) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
@@ -58,7 +59,7 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void showTaggedQuestionLoadSuccess(List<String> taggedQuestions, boolean hasMoreItems) {
+    public void showTagsLoadSuccess(List<TagItems> taggedQuestions, boolean hasMoreItems) {
         TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) rvTaggedQuestion.getAdapter();
         if (adapter != null)
             adapter.detachLoadMore();
@@ -70,7 +71,12 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void showTaggedQuestionLoadError() {
+    public void showTagsLoadError() {
+
+    }
+
+    @Override
+    public void showEmptyTags() {
 
     }
 
@@ -80,12 +86,18 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void showLoadMoreSuccess() {
-
+    public void showMoreTags(List<TagItems> items, boolean hasMoreItems) {
+        ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).addMoreItems(items, hasMoreItems);
     }
 
     @Override
     public void showLoadMoreError() {
+        ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadError();
+    }
+
+    @Override
+    public void onLoadComplete() {
+        ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadComplete();
 
     }
 }

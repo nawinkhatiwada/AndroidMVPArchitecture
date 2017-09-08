@@ -11,7 +11,6 @@ import com.nawin.androidmvparchitecture.data.remote.DataModule;
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
 
 import java.util.HashMap;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -77,8 +76,11 @@ public class Data {
         return call;
     }
 
-    public Call<BaseResponse<List<Tags>>> requestTags(Callback<BaseResponse<List<Tags>>> callback) {
-        Call<BaseResponse<List<Tags>>> call = remoteRepo.getTags();
+    public Call<BaseResponse<Tags>> requestTags(int offset, int limit,Callback<BaseResponse<Tags>> callback) {
+        HashMap<String, Object> params = new HashMap<>(2);
+        params.put("offset", offset);
+        params.put("limit", limit);
+        Call<BaseResponse<Tags>> call = remoteRepo.getTags(params);
         call.enqueue(callback);
         return call;
     }

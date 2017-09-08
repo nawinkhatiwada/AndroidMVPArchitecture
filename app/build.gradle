@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply from: '../signing.gradle'
 
 android {
     compileSdkVersion 25
@@ -14,8 +15,15 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            signingConfig signingConfigs.debug
+            debuggable true
+            applicationIdSuffix ".debug"
+        }
+
     }
     sourceSets { debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] } }
 }

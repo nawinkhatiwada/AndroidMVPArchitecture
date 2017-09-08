@@ -18,9 +18,9 @@ public interface TaggedQuestionsContract {
 
         void showTagsLoadSuccess(List<TagItems> items, boolean hasMoreItems);
 
-        void showTagsLoadError();
+        void showTagsLoadError(String message);
 
-        void showEmptyTags();
+        void showEmptyTags(String message);
 
         void showLoadMoreProgress();
 

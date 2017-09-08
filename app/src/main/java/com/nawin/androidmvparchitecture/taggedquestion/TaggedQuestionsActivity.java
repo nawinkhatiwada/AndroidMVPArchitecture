@@ -1,16 +1,19 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.TagItems;
+import com.nawin.androidmvparchitecture.utils.Commons;
 
 import java.util.List;
 
@@ -20,7 +23,8 @@ import java.util.List;
 
 public class TaggedQuestionsActivity extends AppCompatActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
-    RecyclerView rvTaggedQuestion;
+    private RecyclerView rvTaggedQuestion;
+    private ProgressDialog progressDialog;
 
     public static void start(Activity activity) {
         Intent intent = new Intent(activity, TaggedQuestionsActivity.class);
@@ -55,11 +59,12 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
 
     @Override
     public void showProgress() {
-
+        progressDialog = Commons.showLoadingDialog(this);
     }
 
     @Override
     public void showTagsLoadSuccess(List<TagItems> taggedQuestions, boolean hasMoreItems) {
+        dismissDialog();
         TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) rvTaggedQuestion.getAdapter();
         if (adapter != null)
             adapter.detachLoadMore();
@@ -71,13 +76,15 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void showTagsLoadError() {
-
+    public void showTagsLoadError(String message) {
+        dismissDialog();
+        Toast.makeText(TaggedQuestionsActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showEmptyTags() {
-
+    public void showEmptyTags(String message) {
+        dismissDialog();
+        Toast.makeText(TaggedQuestionsActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -99,5 +106,11 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     public void onLoadComplete() {
         ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadComplete();
 
+    }
+
+    private void dismissDialog() {
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 }

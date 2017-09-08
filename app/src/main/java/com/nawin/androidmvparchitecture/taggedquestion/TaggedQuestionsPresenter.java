@@ -3,6 +3,7 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.content.Context;
 
+import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.TagItems;
 import com.nawin.androidmvparchitecture.data.model.Tags;
@@ -36,6 +37,7 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
 
     @Override
     public void start() {
+        view.showProgress();
         this.offset = 0;
         call = Data.getInstance(context).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
             @Override
@@ -48,16 +50,16 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
                         offset += count;
                         view.showTagsLoadSuccess(items, itemCount > offset);
                     } else {
-                        view.showEmptyTags();
+                        view.showEmptyTags(context.getString(R.string.data_not_available));
                     }
                 } else {
-                    view.showTagsLoadError();
+                    view.showTagsLoadError(context.getString(R.string.server_error));
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Tags>> call, Throwable t) {
-                view.showTagsLoadError();
+                view.showTagsLoadError(context.getString(R.string.server_error));
             }
         });
     }

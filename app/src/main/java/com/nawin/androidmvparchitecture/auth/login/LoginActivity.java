@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
 import com.nawin.androidmvparchitecture.utils.Commons;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
@@ -60,10 +61,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void showLoginSuccess(String message) {
+    public void showLoginSuccess() {
         dismissDialog();
-//       TaggedQuestionsActivity.start(this);
-        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+        TaggedQuestionsActivity.start(this);
     }
 
     @Override

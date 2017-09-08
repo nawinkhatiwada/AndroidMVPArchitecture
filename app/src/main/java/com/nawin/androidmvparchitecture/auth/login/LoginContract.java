@@ -12,7 +12,7 @@ interface LoginContract {
     interface View extends BaseView<Presenter> {
         void showLoginProgress();
 
-        void showLoginSuccess(String message);
+        void showLoginSuccess();
 
         void showLoginError(String message);
 

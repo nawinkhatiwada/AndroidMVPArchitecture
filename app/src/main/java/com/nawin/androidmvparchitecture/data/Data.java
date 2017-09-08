@@ -46,6 +46,10 @@ public class Data {
         this.remoteRepo = remoteRepo;
     }
 
+    public boolean isLoggedIn() {
+        return localRepo.getUserInfo() != null;
+    }
+
     public Call<BaseResponse<UserInfo>> requestLogin(String username, String password, final Callback<BaseResponse<UserInfo>> callback) {
         HashMap<String, Object> params = new HashMap<>(2);
         params.put("username", username);

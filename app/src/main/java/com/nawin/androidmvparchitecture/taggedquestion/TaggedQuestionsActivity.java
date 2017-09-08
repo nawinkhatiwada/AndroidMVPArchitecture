@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
+import com.nawin.androidmvparchitecture.data.Data;
 
 import java.util.List;
 
@@ -28,9 +30,14 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tagged_questions);
+        boolean isLoggedIn = Data.getInstance(this).isLoggedIn();
+        if (!isLoggedIn){
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
         rvTaggedQuestion = (RecyclerView) findViewById(R.id.rvTaggedQuestions);
         presenter = new TaggedQuestionsPresenter(this, this);
-
         presenter.start();
     }
 

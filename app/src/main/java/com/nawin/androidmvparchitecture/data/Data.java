@@ -49,6 +49,10 @@ public class Data {
         return localRepo.getUserInfo() != null;
     }
 
+    public void logout() {
+        localRepo.logout();
+    }
+
     public Call<BaseResponse<UserInfo>> requestLogin(String username, String password, final Callback<BaseResponse<UserInfo>> callback) {
         HashMap<String, Object> params = new HashMap<>(2);
         params.put("username", username);
@@ -76,7 +80,7 @@ public class Data {
         return call;
     }
 
-    public Call<BaseResponse<Tags>> requestTags(int offset, int limit,Callback<BaseResponse<Tags>> callback) {
+    public Call<BaseResponse<Tags>> requestTags(int offset, int limit, Callback<BaseResponse<Tags>> callback) {
         HashMap<String, Object> params = new HashMap<>(2);
         params.put("offset", offset);
         params.put("limit", limit);

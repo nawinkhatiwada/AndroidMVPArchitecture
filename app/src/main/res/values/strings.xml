@@ -11,4 +11,5 @@
     <string name="login_success">Login Success</string>
     <string name="network_not_available_error">Make sure you are connected to internet</string>
     <string name="data_not_available">No data Available to fetch</string>
+    <string name="logout">Logout</string>
 </resources>

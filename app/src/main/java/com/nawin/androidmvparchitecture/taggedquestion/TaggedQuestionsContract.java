@@ -29,11 +29,14 @@ public interface TaggedQuestionsContract {
         void showLoadMoreError();
 
         void onLoadComplete();
+
+        void onLogoutSelection();
     }
 
     interface Presenter extends BasePresenter,
             LoadMoreAdapter.LoadMoreListener,
             TaggedQuestionsAdapter.TaggedQuestionSelectionListener {
 
+        void onLogout();
     }
 }

@@ -19,7 +19,7 @@ public class LocalRepo {
     private static final String USER_INFO = "_user_info";
     private final SharedPreferences sharedPreferences;
     private final Gson gson;
-    private static UserInfo cachedUserInfo;
+    private UserInfo cachedUserInfo;
     private static LocalRepo localRepo;
 
     public static LocalRepo getInstance(Context context) {
@@ -47,5 +47,10 @@ public class LocalRepo {
             }
         }
         return cachedUserInfo;
+    }
+
+    public void logout(){
+       this.cachedUserInfo = null;
+        sharedPreferences.edit().clear().apply();
     }
 }

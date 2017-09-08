@@ -102,4 +102,9 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     public void onTaggedQuestionSelected(List<TagItems> items) {
 
     }
+
+    @Override
+    public void onLogout() {
+        Data.getInstance(context).logout();
+    }
 }

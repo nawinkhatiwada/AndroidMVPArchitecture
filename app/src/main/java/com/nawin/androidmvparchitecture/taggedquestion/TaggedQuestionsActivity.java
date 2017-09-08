@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.R;
@@ -50,6 +53,23 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     protected void onPause() {
         presenter.stop();
         super.onPause();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                onLogoutSelection();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -106,6 +126,13 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     public void onLoadComplete() {
         ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadComplete();
 
+    }
+
+    @Override
+    public void onLogoutSelection() {
+        presenter.onLogout();
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     private void dismissDialog() {

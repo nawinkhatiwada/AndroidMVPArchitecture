@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void showLoginSuccess() {
         dismissDialog();
         TaggedQuestionsActivity.start(this);
+        finish();
     }
 
     @Override

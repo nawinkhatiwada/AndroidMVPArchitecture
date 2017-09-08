@@ -7,8 +7,6 @@ import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 
-import java.io.IOException;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

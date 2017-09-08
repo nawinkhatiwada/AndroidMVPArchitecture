@@ -3,4 +3,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="padding_extra_small">5dp</dimen>
     <dimen name="padding_normal">10dp</dimen>
+    <dimen name="text_size_1">16sp</dimen>
+    <dimen name="text_size_2">14sp</dimen>
 </resources>

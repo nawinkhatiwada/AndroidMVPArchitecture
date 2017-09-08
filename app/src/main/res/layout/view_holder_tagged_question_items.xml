@@ -17,15 +17,18 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@string/title" />
+            android:text="@string/title"
+            android:textSize="@dimen/text_size_1"
+            android:textStyle="bold" />
 
 
         <TextView
-            android:id="@+id/count"
+            android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_normal"
-            android:text="@string/count" />
+            android:text="@string/count"
+            android:textSize="@dimen/text_size_2" />
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

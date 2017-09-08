@@ -43,10 +43,10 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
     @Override
     public void onBindViewHolder_(final TaggedQuestionsHolder holder, final int position) {
 
-//        String taggedQuestions = items.get(position);
         if (items != null) {
-            holder.title.setText(items.get(position).getTitle());
-//            holder.count.setText(taggedQuestions.getAnswerCount());
+            TagItems tags = items.get(position);
+            holder.title.setText(tags.getTitle());
+            holder.count.setText(tags.getDescription());
         }
 
         holder.rootView.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +74,7 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
 
         TaggedQuestionsHolder(View itemView) {
             super(itemView);
-            count = (TextView) itemView.findViewById(R.id.count);
+            count = (TextView) itemView.findViewById(R.id.description);
             title = (TextView) itemView.findViewById(R.id.title);
             rootView = (CardView) itemView.findViewById(R.id.rootView);
         }

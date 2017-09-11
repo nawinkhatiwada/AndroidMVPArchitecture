@@ -1,0 +1,17 @@
+android {
+    signingConfigs {
+        debug {
+            keyAlias DEBUG_KEY_ALIAS
+            keyPassword DEBUG_KEY_PASSWORD
+            storeFile file(DEBUG_STORE_FILE)
+            storePassword DEBUG_STORE_PASSWORD
+        }
+
+        release {
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+            storeFile file(RELEASE_STORE_FILE)
+            storePassword RELEASE_STORE_PASSWORD
+        }
+    }
+}

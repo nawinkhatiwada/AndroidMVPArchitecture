@@ -37,6 +37,9 @@ https://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-di
 
 https://msdn.microsoft.com/en-us/library/ff649571.aspx
 
+**Note:** If your code won't build due to missing keystore then you need to add keystore directory that contains two files with **.jks** extension and generate the signed apk for debug and release build. The password and alias is available on gradle.properties file or if you are aware about generating signed apk then you may follow your own way.
+
+![](https://github.com/nawinkhatiwada/AndroidMVPArchitecture/blob/master/app/src/main/res/drawable/keystore.png)
 --------------------------------------------------------------------------------------------
 # Attribution
 Thank you [Dinesh Gajurel](https://github.com/dineshgajurel) for your wonderful contribution for developing the sample API that I have used in this repository. It was really helpful to have your input in this  project.

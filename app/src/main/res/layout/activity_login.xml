@@ -10,6 +10,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_normal"
+        android:text="@string/login_info" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/username" />
 
@@ -17,7 +23,9 @@
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text" />
+        android:gravity="center"
+        android:inputType="text"
+        android:text="@string/login_username" />
 
     <TextView
         android:layout_width="match_parent"
@@ -29,7 +37,9 @@
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword" />
+        android:gravity="center"
+        android:inputType="textPassword"
+        android:text="@string/login_password" />
 
     <Button
         android:id="@+id/btnLogin"

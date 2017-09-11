@@ -12,4 +12,7 @@
     <string name="network_not_available_error">Make sure you are connected to internet</string>
     <string name="data_not_available">No data Available to fetch</string>
     <string name="logout">Logout</string>
+    <string name="login_info">Use mvp_android as username and 1234 as password</string>
+    <string name="login_username">mvp_android</string>
+    <string name="login_password">1234</string>
 </resources>

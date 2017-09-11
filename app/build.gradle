@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
+apply from: '../signing.gradle'
 
 
 android {
@@ -16,8 +17,15 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            signingConfig signingConfigs.debug
+            debuggable true
+            applicationIdSuffix ".debug"
+        }
+
     }
     sourceSets { debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] } }
     compileOptions {

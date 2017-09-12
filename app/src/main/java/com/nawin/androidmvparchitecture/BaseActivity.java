@@ -17,7 +17,7 @@ public class BaseActivity extends AppCompatActivity{
     protected MvpComponent component;
 
     @Inject
-    Data data;
+    protected Data data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

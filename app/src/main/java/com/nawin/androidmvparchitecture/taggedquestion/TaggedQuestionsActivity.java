@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
+import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.databinding.ActivityTaggedQuestionsBinding;
 
 import java.util.List;
@@ -29,6 +31,12 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_tagged_questions);
+       boolean isLoggedIn = data.isLoggedIn();
+        if (!isLoggedIn) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
         presenter = new TaggedQuestionsPresenter(component, this);
     }
 

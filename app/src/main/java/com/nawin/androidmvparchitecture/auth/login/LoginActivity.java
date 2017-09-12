@@ -9,9 +9,9 @@ import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.databinding.ActivityLoginBinding;
 import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
+import com.nawin.androidmvparchitecture.utils.Commons;
 
 import static android.text.TextUtils.isEmpty;
-import static com.nawin.androidmvparchitecture.utils.Commons.showLoadingDialog;
 
 public class LoginActivity extends BaseActivity implements LoginContract.View {
     private LoginContract.Presenter presenter;
@@ -45,35 +45,39 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         super.onPause();
     }
 
-
     @Override
     public void showLoginProgress() {
-        progressDialog = showLoadingDialog(this, getString(R.string.verifying_login));
+        progressDialog = Commons.showLoadingDialog(this, getString(R.string.verifying_login));
     }
 
     @Override
-    public void showLoginSuccess(String message) {
-        progressDialog.dismiss();
-      TaggedQuestionsActivity.start(this);
-        Toast.makeText(this, getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+    public void showLoginSuccess() {
+        dismissDialog();
+        TaggedQuestionsActivity.start(this);
+        finish();
     }
 
     @Override
     public void showLoginError(String message) {
-        progressDialog.dismiss();
+        dismissDialog();
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void showNetworkNotAvailableError() {
-        progressDialog.dismiss();
+        dismissDialog();
         Toast.makeText(this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
         this.presenter = presenter;
+    }
+
+    private void dismissDialog() {
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
     }
 
 }

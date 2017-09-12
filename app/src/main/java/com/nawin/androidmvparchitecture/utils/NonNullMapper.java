@@ -11,7 +11,7 @@ public class NonNullMapper<T> implements Function<BaseResponse<T>, Single<T>> {
     @Override
     public Single<T> apply(@NonNull BaseResponse<T> baseResponse) throws Exception {
         if (baseResponse.getStatusCode() != 1)
-            return Single.error(new FailedResponseException(baseResponse.getStatusCode(), "message"));
+            return Single.error(new FailedResponseException(baseResponse.getStatusCode(),baseResponse.getStatusMessage()));
         T item = baseResponse.getResponse();
         if (item == null)
             return Single.error(new NullPointerException("BaseResponse.Response == null"));

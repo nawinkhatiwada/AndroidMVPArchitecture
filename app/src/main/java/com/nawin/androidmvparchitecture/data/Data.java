@@ -30,6 +30,15 @@ public class Data {
         this.remoteRepo = remoteRepo;
     }
 
+    public boolean isLoggedIn() {
+        return localRepo.getUserInfo() != null;
+    }
+
+    public void logout() {
+        localRepo.logout();
+    }
+
+
     public Single<UserInfo> requestLogin(String username, String password) {
         HashMap<String, Object> params = new HashMap<>(2);
         params.put("username", username);

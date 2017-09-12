@@ -1,16 +1,22 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
-import com.nawin.androidmvparchitecture.data.Data;
+import com.nawin.androidmvparchitecture.data.model.TagItems;
 import com.nawin.androidmvparchitecture.databinding.ActivityTaggedQuestionsBinding;
+import com.nawin.androidmvparchitecture.utils.Commons;
 
 import java.util.List;
 
@@ -21,6 +27,7 @@ import java.util.List;
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
    private ActivityTaggedQuestionsBinding binding;
+    private ProgressDialog progressDialog;
 
     public static void start(Activity activity) {
         Intent intent = new Intent(activity, TaggedQuestionsActivity.class);
@@ -52,29 +59,56 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
         super.onPause();
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                onLogoutSelection();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
+
     @Override
     public void showProgress() {
-
+        progressDialog = Commons.showLoadingDialog(this);
     }
 
     @Override
-    public void showTaggedQuestionLoadSuccess(List<String> taggedQuestions, boolean hasMoreItems) {
+    public void showTagsLoadSuccess(List<TagItems> taggedQuestions, boolean hasMoreItems) {
+        dismissDialog();
+        TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter();
+        if (adapter != null)
+            adapter.detachLoadMore();
+        adapter = new TaggedQuestionsAdapter(binding.rvTaggedQuestion, taggedQuestions, presenter);
 
-//    Remove Comment only if there is concept of loadMore in the app
-        TaggedQuestionsAdapter
-//                adapter = (TaggedQuestionsAdapter) rvTaggedQuestion.getAdapter();
-//        if (adapter != null)
-//            adapter.detachLoadMore();
-        adapter = new TaggedQuestionsAdapter(binding.rvTaggedQuestions, taggedQuestions, presenter);
-
-//        if (hasMoreItems)
-//            adapter.attachLoadMore(presenter);
-        this.binding.rvTaggedQuestions.setAdapter(adapter);
+        if (hasMoreItems)
+            adapter.attachLoadMore(presenter);
+        binding.rvTaggedQuestion.setAdapter(adapter);
     }
 
     @Override
-    public void showTaggedQuestionLoadError() {
+    public void showTagsLoadError(String message) {
+        dismissDialog();
+        Toast.makeText(TaggedQuestionsActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void showEmptyTags(String message) {
+        dismissDialog();
+        Toast.makeText(TaggedQuestionsActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -83,23 +117,31 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
     }
 
     @Override
-    public void showMoreItems() {
+    public void showMoreTags(List<TagItems> items, boolean hasMoreItems) {
+        ((TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter()).addMoreItems(items, hasMoreItems);
+    }
+
+    @Override
+    public void showLoadMoreError() {
+        ((TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter()).onLoadError();
+    }
+
+    @Override
+    public void onLoadComplete() {
+        ((TaggedQuestionsAdapter)binding.rvTaggedQuestion.getAdapter()).onLoadComplete();
 
     }
 
     @Override
-    public void showLoadMoreComplete() {
-        ((TaggedQuestionsAdapter) this.binding.rvTaggedQuestions.getAdapter()).onLoadComplete();
+    public void onLogoutSelection() {
+        presenter.onLogout();
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
-    @Override
-    public void showLoadMoreError(String message) {
-
+    private void dismissDialog() {
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
-
-    @Override
-    public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
-        this.presenter = presenter;
-    }
-
 }

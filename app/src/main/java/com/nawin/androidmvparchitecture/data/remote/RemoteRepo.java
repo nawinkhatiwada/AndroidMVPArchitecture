@@ -4,6 +4,7 @@ import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,5 +25,5 @@ public interface RemoteRepo {
     Single<BaseResponse<UserInfo>> requestLogin(@Body Map<String, Object> params);
 
     @POST("?recentTags")
-    Single<BaseResponse<List<Tags>>> getTags();
+    Single<BaseResponse<Tags>> getTags(@Body Map<String, Object> params);
 }

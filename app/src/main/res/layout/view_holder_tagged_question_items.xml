@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
-
         <variable
             name="tag"
-            type="String">
-
+            type="com.nawin.androidmvparchitecture.data.model.TagItems">
         </variable>
-
     </data>
 
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,15 +25,14 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="@{tag.toString}" />
-
+                android:text="@{tag.title}" />
 
             <TextView
                 android:id="@+id/count"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_normal"
-                android:text="@string/count" />
+                android:text="@{tag.description}" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

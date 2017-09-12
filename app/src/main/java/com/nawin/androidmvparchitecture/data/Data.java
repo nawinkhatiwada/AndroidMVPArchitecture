@@ -52,8 +52,11 @@ public class Data {
                 }).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Single<List<Tags>> requestTags() {
-        return remoteRepo.getTags()
+    public Single<Tags> requestTags(int offset, int limit) {
+        HashMap<String,Object> params = new HashMap<>();
+        params.put("offset",offset);
+        params.put("limit",limit);
+        return remoteRepo.getTags(params)
                 .map(BaseResponse::getResponse)
                 .observeOn(AndroidSchedulers.mainThread());
     }

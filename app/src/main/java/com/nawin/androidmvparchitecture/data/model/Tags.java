@@ -7,13 +7,23 @@ import java.util.List;
  */
 
 public class Tags {
-    private List<String> tags;
 
-    public List<String> getTags() {
-        return tags;
+    private int itemCount;
+    private List<TagItems> items;
+
+    public List<TagItems> getItems() {
+        return items;
     }
 
-    public void setTags(List<String> tags) {
-        this.tags = tags;
+    public void setItems(List<TagItems> items) {
+        this.items = items;
+    }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    public void setItemCount(int itemCount) {
+        this.itemCount = itemCount;
     }
 }

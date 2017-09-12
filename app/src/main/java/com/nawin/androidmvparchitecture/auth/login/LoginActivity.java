@@ -27,12 +27,12 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         binding.btnLogin.setOnClickListener(v -> {
             String username = binding.etUsername.getText().toString();
             if (isEmpty(username)) {
-                Toast.makeText(this, getString(R.string.empty_field_error), Toast.LENGTH_SHORT).show();
+                binding.etUsername.setError(getString(R.string.empty_field_msg));
                 return;
             }
             String password = binding.etPassword.getText().toString();
             if (isEmpty(password)) {
-                Toast.makeText(this, getString(R.string.empty_field_error), Toast.LENGTH_SHORT).show();
+                binding.etPassword.setError(getString(R.string.empty_field_msg));
                 return;
             }
             presenter.onLogin(username, password);

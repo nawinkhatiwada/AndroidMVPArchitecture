@@ -1,4 +1,5 @@
 **Download sample apk from here**
+
 [![apk](https://img.shields.io/badge/apk-download-orange.svg)](https://play.google.com/store/apps/details?id=com.nawin.androidmvparchitecture)
 
 # Android MVP Architecture

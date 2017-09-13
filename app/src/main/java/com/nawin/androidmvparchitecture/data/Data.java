@@ -8,7 +8,6 @@ import com.nawin.androidmvparchitecture.data.remote.RemoteRepo;
 import com.nawin.androidmvparchitecture.utils.NonNullMapper;
 
 import java.util.HashMap;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

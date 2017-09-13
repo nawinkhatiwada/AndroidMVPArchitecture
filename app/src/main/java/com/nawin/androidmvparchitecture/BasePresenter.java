@@ -6,5 +6,6 @@ package com.nawin.androidmvparchitecture;
 
 public interface BasePresenter {
     void start();
+
     void stop();
 }

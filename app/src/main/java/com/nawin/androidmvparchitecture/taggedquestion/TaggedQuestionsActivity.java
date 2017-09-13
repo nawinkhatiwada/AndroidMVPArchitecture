@@ -26,7 +26,7 @@ import java.util.List;
 
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
     private TaggedQuestionsContract.Presenter presenter;
-   private ActivityTaggedQuestionsBinding binding;
+    private ActivityTaggedQuestionsBinding binding;
     private ProgressDialog progressDialog;
 
     public static void start(Activity activity) {
@@ -37,8 +37,8 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_tagged_questions);
-       boolean isLoggedIn = data.isLoggedIn();
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_tagged_questions);
+        boolean isLoggedIn = data.isLoggedIn();
         if (!isLoggedIn) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
@@ -59,7 +59,6 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
         super.onPause();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -72,10 +71,11 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
         switch (item.getItemId()) {
             case R.id.logout:
                 onLogoutSelection();
-                break;
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
         this.presenter = presenter;
@@ -128,7 +128,7 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 
     @Override
     public void onLoadComplete() {
-        ((TaggedQuestionsAdapter)binding.rvTaggedQuestion.getAdapter()).onLoadComplete();
+        ((TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter()).onLoadComplete();
 
     }
 

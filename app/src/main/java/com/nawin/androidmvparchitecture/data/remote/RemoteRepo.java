@@ -4,8 +4,6 @@ import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.Single;

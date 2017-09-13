@@ -55,12 +55,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
                         loadPolicy.setLoadStart();
                         listener.onLoadMore();
                         if (showLoading)
-                            recyclerView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    notifyItemInserted(getItemCount_());
-                                }
-                            });
+                            recyclerView.post(() -> notifyItemInserted(getItemCount_()));
                     }
                 }
             }

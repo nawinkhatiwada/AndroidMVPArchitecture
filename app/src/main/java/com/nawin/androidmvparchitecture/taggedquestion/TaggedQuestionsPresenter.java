@@ -18,7 +18,7 @@ import static com.nawin.androidmvparchitecture.utils.Commons.isEmpty;
  */
 
 class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
-    private final int LIMIT = 10;
+    private static final int LIMIT = 10;
     private final MvpComponent component;
     private TaggedQuestionsContract.View view;
     private Disposable disposable;

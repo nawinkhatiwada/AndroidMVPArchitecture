@@ -7,7 +7,7 @@ import com.nawin.androidmvparchitecture.BaseView;
  * Created by nawin on 6/13/17.
  */
 
-public interface LoginContract {
+interface LoginContract {
 
     interface View extends BaseView<Presenter> {
         void showLoginProgress();

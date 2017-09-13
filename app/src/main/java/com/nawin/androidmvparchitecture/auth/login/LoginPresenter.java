@@ -3,8 +3,6 @@ package com.nawin.androidmvparchitecture.auth.login;
 import com.nawin.androidmvparchitecture.MvpComponent;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
 
-import java.io.IOException;
-
 import io.reactivex.disposables.Disposable;
 
 import static com.nawin.androidmvparchitecture.utils.Commons.dispose;

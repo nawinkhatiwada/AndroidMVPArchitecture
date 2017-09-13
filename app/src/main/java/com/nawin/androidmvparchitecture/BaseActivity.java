@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * Created by nawin on 7/20/17.
  */
 
-public class BaseActivity extends AppCompatActivity{
+public class BaseActivity extends AppCompatActivity {
 
     protected MvpComponent component;
 

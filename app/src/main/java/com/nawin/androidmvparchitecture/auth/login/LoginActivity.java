@@ -76,7 +76,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     private void dismissDialog() {
-        if (progressDialog.isShowing())
+        if (progressDialog != null && progressDialog.isShowing())
             progressDialog.dismiss();
     }
 

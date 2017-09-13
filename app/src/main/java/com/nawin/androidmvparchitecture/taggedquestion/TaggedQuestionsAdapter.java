@@ -17,7 +17,7 @@ import java.util.List;
  * Created by nawin on 6/14/17.
  */
 
-public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
+class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
     private final List<TagItems> items;
     private final TaggedQuestionSelectionListener listener;
 
@@ -53,7 +53,7 @@ public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapt
         holder.binding.executePendingBindings();
     }
 
-    public void addMoreItems(List<TagItems> items, boolean hasMoreItems) {
+    void addMoreItems(List<TagItems> items, boolean hasMoreItems) {
         final int count = this.items.size();
         this.items.addAll(items);
         onItemsAdded(count, items.size(), hasMoreItems);

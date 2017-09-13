@@ -18,7 +18,7 @@ import io.reactivex.disposables.Disposable;
 public class Commons {
 
     public static void dispose(Disposable... disposables) {
-        if (disposables != null && disposables.length > 0) {
+        if (disposables != null) {
             for (Disposable disposable : disposables) {
                 if (disposable != null)
                     disposable.dispose();

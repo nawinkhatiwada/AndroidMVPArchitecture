@@ -13,4 +13,7 @@
     <string name="logout">Logout</string>
     <string name="data_not_available">No data Available to fetch</string>
     <string name="empty_field_msg">Field can\'t be empty</string>
+    <string name="login_username">mvp_android</string>
+    <string name="login_password">1234</string>
+    <string name="login_info">Use mvp_android as username and 1234 as password</string>
 </resources>

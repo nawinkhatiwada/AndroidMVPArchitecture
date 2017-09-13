@@ -22,7 +22,5 @@ public interface MvpComponent {
 
     Data data();
 
-    Gson gson();
-
     void inject(BaseActivity baseActivity);
 }

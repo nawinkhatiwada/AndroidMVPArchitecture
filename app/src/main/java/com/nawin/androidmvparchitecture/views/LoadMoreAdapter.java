@@ -29,7 +29,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
         this(recyclerView, true);
     }
 
-    public LoadMoreAdapter(@NonNull RecyclerView recyclerView, boolean showLoading) {
+    private LoadMoreAdapter(@NonNull RecyclerView recyclerView, boolean showLoading) {
         RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         if (layoutManager == null || !(layoutManager instanceof LinearLayoutManager)) {
             throw new IllegalArgumentException("RecyclerView must have instance of LinearLayoutManager");
@@ -73,7 +73,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
 
     public abstract void onBindViewHolder_(VH holder, int position);
 
-    public int getItemViewType_(int position) {
+    private int getItemViewType_(int position) {
         return 0;
     }
 

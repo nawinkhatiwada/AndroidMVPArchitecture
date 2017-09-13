@@ -31,7 +31,7 @@ public class Data {
         if (data == null) {
             RemoteRepo remoteRepo = new Retrofit.Builder()
                     .baseUrl(DataModule.BASE_URL)
-                    .client(DataModule.getHttpClient()) //client is for logging the request and response
+                    .client(DataModule.getHttpClient()) //getHttpClient is for logging the request and response
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .build().create(RemoteRepo.class);
 
@@ -62,11 +62,11 @@ public class Data {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
                 if (response != null && response.isSuccessful()) {
-                    callback.onResponse(call, response);
                     UserInfo userInfo = response.body().getResponse() == null ? null : response.body().getResponse();
                     if (userInfo != null) {
                         localRepo.setUserInfo(userInfo);
                     }
+                    callback.onResponse(call, response);
                 } else {
                     callback.onFailure(call, new Exception());
                 }

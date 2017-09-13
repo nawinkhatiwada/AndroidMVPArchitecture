@@ -49,8 +49,8 @@ public class LocalRepo {
         return cachedUserInfo;
     }
 
-    public void logout(){
-       this.cachedUserInfo = null;
+    public void logout() {
+        this.cachedUserInfo = null;
         sharedPreferences.edit().clear().apply();
     }
 }

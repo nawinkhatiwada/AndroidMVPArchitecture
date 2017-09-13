@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        View btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     private void dismissDialog() {
-        if (progressDialog.isShowing())
+        if (progressDialog != null && progressDialog.isShowing())
             progressDialog.dismiss();
     }
 }

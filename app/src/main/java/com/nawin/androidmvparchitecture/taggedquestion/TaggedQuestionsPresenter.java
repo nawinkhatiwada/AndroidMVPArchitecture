@@ -99,7 +99,7 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     }
 
     @Override
-    public void onTaggedQuestionSelected(List<TagItems> items) {
+    public void onTaggedQuestionSelected(TagItems items) {
 
     }
 

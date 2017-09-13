@@ -6,15 +6,14 @@ package com.nawin.androidmvparchitecture.data.model;
 
 public class TagItems {
 
-
     /**
      * id : 1
      * title : Android
      * description : Description is the pattern of
-     development that presents a
-     word picture of a thing, a
-     person, a situation, or a
-     series of events.
+     * development that presents a
+     * word picture of a thing, a
+     * person, a situation, or a
+     * series of events.
      */
 
     private int id;

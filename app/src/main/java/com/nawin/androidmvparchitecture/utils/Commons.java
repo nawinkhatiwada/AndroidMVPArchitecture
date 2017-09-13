@@ -16,7 +16,7 @@ import retrofit2.Call;
 public class Commons {
     //Used to cancel Retrofit's call or calls
     public static void cancel(Call... calls) {
-        if (calls != null && calls.length > 0) {
+        if (calls != null) {
             for (Call call : calls) {
                 if (call != null)
                     call.cancel();

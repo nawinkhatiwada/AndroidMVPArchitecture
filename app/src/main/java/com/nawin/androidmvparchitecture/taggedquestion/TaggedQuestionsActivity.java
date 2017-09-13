@@ -50,9 +50,9 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    protected void onPause() {
+    protected void onDestroy() {
         presenter.stop();
-        super.onPause();
+        super.onDestroy();
     }
 
     @Override
@@ -67,7 +67,7 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
         switch (item.getItemId()) {
             case R.id.logout:
                 onLogoutSelection();
-                break;
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,7 +125,6 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     @Override
     public void onLoadComplete() {
         ((TaggedQuestionsAdapter) this.rvTaggedQuestion.getAdapter()).onLoadComplete();
-
     }
 
     @Override
@@ -136,7 +135,7 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     private void dismissDialog() {
-        if (progressDialog.isShowing()) {
+        if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }

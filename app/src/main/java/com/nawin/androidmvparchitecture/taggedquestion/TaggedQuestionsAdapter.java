@@ -53,19 +53,19 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
             @Override
             public void onClick(View v) {
                 if (items != null)
-                    listener.onTaggedQuestionSelected(items);
+                    listener.onTaggedQuestionSelected(items.get(position));
             }
         });
     }
 
-    public void addMoreItems(List<TagItems> items, boolean hasMoreItems) {
+    void addMoreItems(List<TagItems> items, boolean hasMoreItems) {
         final int count = this.items.size();
         this.items.addAll(items);
         onItemsAdded(count, items.size(), hasMoreItems);
     }
 
     interface TaggedQuestionSelectionListener {
-        void onTaggedQuestionSelected(List<TagItems> items);
+        void onTaggedQuestionSelected(TagItems items);
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {

@@ -24,7 +24,7 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
     TaggedQuestionsAdapter(@NonNull RecyclerView recyclerView,
                            List<TagItems> taggedQuestions,
                            TaggedQuestionSelectionListener listener) {
-        super(recyclerView, true);
+        super(recyclerView);
         this.items = taggedQuestions;
         this.listener = listener;
     }

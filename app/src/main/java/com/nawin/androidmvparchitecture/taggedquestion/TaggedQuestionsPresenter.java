@@ -36,19 +36,16 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
         view.showProgress();
         this.offset = 1;
         disposable = component.data().requestTags(offset, LIMIT).subscribe(response -> {
-            if (response != null) {
-                int itemCount = response.getItemCount();
-                List<TagItems> items = response.getItems();
-                if (itemCount > 0 && !isEmpty(items)) {
-                    final int count = items.size();
-                    offset += count;
-                    view.showTagsLoadSuccess(items, itemCount > offset);
-                } else {
-                    view.showEmptyTags(component.context().getString(R.string.data_not_available));
-                }
+            int itemCount = response.getItemCount();
+            List<TagItems> items = response.getItems();
+            if (itemCount > 0 && !isEmpty(items)) {
+                final int count = items.size();
+                offset += count;
+                view.showTagsLoadSuccess(items, itemCount > offset);
             } else {
-                view.showEmptyTags(component.context().getString(R.string.server_error));
+                view.showEmptyTags(component.context().getString(R.string.data_not_available));
             }
+
         }, throwable -> {
             if (throwable instanceof FailedResponseException) {
                 view.showTagsLoadError(throwable.getMessage());

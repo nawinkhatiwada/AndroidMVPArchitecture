@@ -1,7 +1,6 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
 
 import com.nawin.androidmvparchitecture.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
@@ -9,18 +8,14 @@ import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
 import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 import com.nawin.androidmvparchitecture.data.model.UserInfo;
-import com.nawin.androidmvparchitecture.utils.Commons;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.util.reflection.Whitebox;
 
 import io.reactivex.Single;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

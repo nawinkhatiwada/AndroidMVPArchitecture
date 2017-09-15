@@ -4,6 +4,7 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 import com.nawin.androidmvparchitecture.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
+import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 import com.nawin.androidmvparchitecture.data.model.TagItems;
 
 import java.util.List;
@@ -51,6 +52,8 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
         }, throwable -> {
             if (throwable instanceof FailedResponseException) {
                 view.showTagsLoadError(throwable.getMessage());
+            } else if (throwable instanceof NetworkNotAvailableException) {
+                view.showNetworkNotAvailableError();
             } else {
                 view.showTagsLoadError(component.context().getString(R.string.server_error));
             }

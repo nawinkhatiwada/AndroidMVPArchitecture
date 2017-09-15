@@ -20,8 +20,10 @@ public class DataModule {
 
     @Provides
     @Singleton
-    OkHttpClient getHttpClient() {
-        return new OkHttpClient.Builder().build();
+    OkHttpClient getHttpClient(ApiInterceptor apiInterceptor) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(apiInterceptor)
+                .build();
     }
 
     @Provides

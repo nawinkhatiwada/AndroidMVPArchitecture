@@ -22,11 +22,12 @@ public class DataModule {
 
     @Provides
     @Singleton
-    OkHttpClient getHttpClient() {
+    OkHttpClient getHttpClient(ApiInterceptor apiInterceptor) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
+                .addInterceptor(apiInterceptor)
                 .addNetworkInterceptor(new StethoInterceptor())
                 .build();
     }

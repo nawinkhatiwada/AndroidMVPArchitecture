@@ -65,4 +65,7 @@ dependencies {
     debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
     debugCompile "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
 
+    testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testCompile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
+
 }

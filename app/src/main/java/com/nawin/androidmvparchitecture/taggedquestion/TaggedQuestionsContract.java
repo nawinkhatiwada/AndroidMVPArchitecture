@@ -32,7 +32,7 @@ interface TaggedQuestionsContract {
 
         void onLogoutSelection();
 
-
+        void showNetworkNotAvailableError();
     }
 
     interface Presenter extends BasePresenter,

@@ -41,4 +41,6 @@ ext {
     rxAndroidVersion = "2.0.1"
     rxJavaVersion = '2.1.0'
 
+    mockitoVersion = '1.10.19'
+
 }

@@ -1,7 +1,9 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
 import com.nawin.androidmvparchitecture.MvpComponent;
+import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
+import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 
 import io.reactivex.disposables.Disposable;
 
@@ -35,17 +37,15 @@ class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void onLogin(String username, String password) {
-        if (!isNetworkAvailable(component.context())) {
-            view.showNetworkNotAvailableError();
-            return;
-        }
         view.showLoginProgress();
         disposable = component.data().requestLogin(username, password)
                 .subscribe(userInfo -> view.showLoginSuccess(), throwable -> {
                     if (throwable instanceof FailedResponseException)
                         view.showLoginError(throwable.getMessage());
+                    else if (throwable instanceof NetworkNotAvailableException)
+                        view.showNetworkNotAvailableError();
                     else
-                        view.showLoginError("Server Error");
+                        view.showLoginError(component.context().getString(R.string.server_error));
                 });
     }
 }

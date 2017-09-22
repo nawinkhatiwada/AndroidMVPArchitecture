@@ -23,3 +23,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+-printmapping mapping.txt
+
+ -dontwarn java.lang.invoke.*
+ -dontwarn okio.Okio
+ -dontwarn okio.DeflaterSink
+ -dontwarn retrofit2.*
+ -keep class com.nawin.androidmvparchitecture.data.model.** { *; }

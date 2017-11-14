@@ -141,7 +141,7 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 
     @Override
     public void showNetworkNotAvailableError() {
-        progressDialog.dismiss();
+        dismissDialog();
         Toast.makeText(TaggedQuestionsActivity.this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
 
     }

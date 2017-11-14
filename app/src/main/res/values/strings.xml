@@ -7,7 +7,7 @@
     <string name="title">Title: %s</string>
     <string name="count">Count: %s</string>
     <string name="login_success">Login Success</string>
-    <string name="network_not_available_error">Network Not Available</string>
+    <string name="network_not_available_error">Make sure you are connected to internet</string>
     <string name="verifying_login">Verifying username and password…</string>
     <string name="loading">Loading</string>
     <string name="logout">Logout</string>

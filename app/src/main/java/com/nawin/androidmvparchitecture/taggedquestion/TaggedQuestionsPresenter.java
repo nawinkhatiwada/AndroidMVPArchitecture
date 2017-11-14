@@ -17,6 +17,7 @@ import retrofit2.Response;
 
 import static com.nawin.androidmvparchitecture.utils.Commons.cancel;
 import static com.nawin.androidmvparchitecture.utils.Commons.isEmpty;
+import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
 
 /**
  * Created by nawin on 6/14/17.
@@ -37,6 +38,11 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
 
     @Override
     public void start() {
+
+        if (!isNetworkAvailable(context)) {
+            view.showNetworkNotAvailableError();
+            return;
+        }
         view.showProgress();
         this.offset = 0;
         call = Data.getInstance(context).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {

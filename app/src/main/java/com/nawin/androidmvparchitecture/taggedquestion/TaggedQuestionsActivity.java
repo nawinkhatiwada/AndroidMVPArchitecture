@@ -50,9 +50,9 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onPause() {
         presenter.stop();
-        super.onDestroy();
+        super.onPause();
     }
 
     @Override
@@ -132,6 +132,13 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
         presenter.onLogout();
         startActivity(new Intent(this, LoginActivity.class));
         finish();
+    }
+
+    @Override
+    public void showNetworkNotAvailableError() {
+        dismissDialog();
+        Toast.makeText(this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
+
     }
 
     private void dismissDialog() {

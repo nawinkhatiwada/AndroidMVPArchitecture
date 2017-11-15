@@ -147,7 +147,7 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
     }
 
     private void dismissDialog() {
-        if (progressDialog.isShowing()) {
+        if (progressDialog!= null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
     }

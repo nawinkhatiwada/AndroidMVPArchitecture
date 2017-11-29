@@ -1,9 +1,11 @@
 package com.nawin.androidmvparchitecture.data.remote
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,6 +16,7 @@ import javax.inject.Singleton
  */
 @Module
 class DataModule {
+
     companion object {
         private val BASE_URL = "https://androidragger.000webhostapp.com/mvp_android/api.php/"
     }
@@ -21,8 +24,12 @@ class DataModule {
     @Provides
     @Singleton
     internal fun getHttpClient(apiInterceptor: ApiInterceptor): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
         return OkHttpClient.Builder()
+                .addInterceptor(interceptor)
                 .addInterceptor(apiInterceptor)
+                .addNetworkInterceptor(StethoInterceptor())
                 .build()
     }
 
@@ -36,4 +43,5 @@ class DataModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
                 .build().create(RemoteRepo::class.java)
     }
+
 }

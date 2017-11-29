@@ -2,6 +2,8 @@ package com.nawin.androidmvparchitecture.data.remote;
 
 import android.content.Context;
 
+import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
+
 import java.io.IOException;
 
 import javax.inject.Inject;

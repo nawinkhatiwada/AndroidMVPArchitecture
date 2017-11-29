@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 /**
@@ -29,6 +30,8 @@ class DataModule {
         return OkHttpClient.Builder()
                 .addInterceptor(interceptor)
                 .addInterceptor(apiInterceptor)
+                .writeTimeout(15, TimeUnit.SECONDS)
+                .readTimeout(15, TimeUnit.SECONDS)
                 .addNetworkInterceptor(StethoInterceptor())
                 .build()
     }

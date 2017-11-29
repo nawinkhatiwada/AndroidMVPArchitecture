@@ -7,8 +7,6 @@ import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 
 import io.reactivex.disposables.Disposable;
 
-import static com.nawin.androidmvparchitecture.utils.Commons.dispose;
-
 /**
  * Created by nawin on 6/13/17.
  */
@@ -31,7 +29,7 @@ class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void stop() {
-        dispose(disposable);
+        disposable.dispose();
     }
 
     @Override

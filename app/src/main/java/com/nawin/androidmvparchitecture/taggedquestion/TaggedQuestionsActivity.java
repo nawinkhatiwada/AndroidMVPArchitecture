@@ -16,7 +16,6 @@ import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 import com.nawin.androidmvparchitecture.data.model.TagItems;
 import com.nawin.androidmvparchitecture.databinding.ActivityTaggedQuestionsBinding;
-import com.nawin.androidmvparchitecture.utils.Commons;
 
 import java.util.List;
 

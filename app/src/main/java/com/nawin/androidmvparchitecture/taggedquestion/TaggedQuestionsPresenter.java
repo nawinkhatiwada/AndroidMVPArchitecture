@@ -11,8 +11,8 @@ import java.util.List;
 
 import io.reactivex.disposables.Disposable;
 
-import static com.nawin.androidmvparchitecture.utils.Commons.dispose;
-import static com.nawin.androidmvparchitecture.utils.Commons.isEmpty;
+import static com.nawin.androidmvparchitecture.utils.CommonsKt.isEmpty;
+
 
 /**
  * Created by nawin on 6/14/17.
@@ -59,7 +59,7 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
 
     @Override
     public void stop() {
-        dispose(disposable);
+        disposable.dispose();
     }
 
     @Override

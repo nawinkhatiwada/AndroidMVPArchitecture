@@ -62,7 +62,7 @@ public class Data {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
                 if (response != null && response.isSuccessful()) {
-                    UserInfo userInfo = response.body().getResponse() == null ? null : response.body().getResponse();
+                    UserInfo userInfo = response.body().getResponse();
                     if (userInfo != null) {
                         localRepo.setUserInfo(userInfo);
                     }

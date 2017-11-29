@@ -8,7 +8,6 @@ import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 import io.reactivex.disposables.Disposable;
 
 import static com.nawin.androidmvparchitecture.utils.Commons.dispose;
-import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
 
 /**
  * Created by nawin on 6/13/17.

@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 apply from: '../signing.gradle'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.nawin.rxmvparchitecture"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -46,6 +46,8 @@ dependencies {
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
     testCompile 'junit:junit:4.12'
+    kapt "com.android.databinding:compiler:$gradle_version"
+
 
     compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
@@ -53,10 +55,12 @@ dependencies {
     compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
     compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     compile "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.ext.kotlinVersion"
 
 //    Dagger library
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+//    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
 //    Rx java and RX android
     compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
     compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"

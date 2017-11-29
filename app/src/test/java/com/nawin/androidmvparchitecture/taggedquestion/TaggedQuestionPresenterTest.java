@@ -4,8 +4,6 @@ import android.content.Context;
 
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
-import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
-import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 import com.nawin.androidmvparchitecture.data.model.TagItems;
 import com.nawin.androidmvparchitecture.data.model.Tags;
 import com.nawin.androidmvparchitecture.data.model.api.BaseResponse;

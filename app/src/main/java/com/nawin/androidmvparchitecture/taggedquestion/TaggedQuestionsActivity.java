@@ -19,6 +19,8 @@ import com.nawin.androidmvparchitecture.databinding.ActivityTaggedQuestionsBindi
 
 import java.util.List;
 
+import static com.nawin.androidmvparchitecture.utils.CommonsKt.showLoadingDialog;
+
 /**
  * Created by nawin on 6/14/17.
  */
@@ -82,7 +84,7 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
 
     @Override
     public void showProgress() {
-        progressDialog = Commons.showLoadingDialog(this);
+        progressDialog = showLoadingDialog(this);
     }
 
     @Override

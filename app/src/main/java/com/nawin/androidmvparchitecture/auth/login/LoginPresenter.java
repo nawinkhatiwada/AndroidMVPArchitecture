@@ -36,13 +36,15 @@ class LoginPresenter implements LoginContract.Presenter {
     public void onLogin(String username, String password) {
         view.showLoginProgress();
         disposable = component.data().requestLogin(username, password)
-                .subscribe(userInfo -> view.showLoginSuccess(), throwable -> {
-                    if (throwable instanceof FailedResponseException)
-                        view.showLoginError(throwable.getMessage());
-                    else if (throwable instanceof NetworkNotAvailableException)
-                        view.showNetworkNotAvailableError();
-                    else
-                        view.showLoginError(component.context().getString(R.string.server_error));
-                });
+                .subscribe(userInfo ->
+                                view.showLoginSuccess(),
+                        throwable -> {
+                            if (throwable instanceof FailedResponseException)
+                                view.showLoginError(throwable.getMessage());
+                            else if (throwable instanceof NetworkNotAvailableException)
+                                view.showNetworkNotAvailableError();
+                            else
+                                view.showLoginError(component.context().getString(R.string.server_error));
+                        });
     }
 }

@@ -28,12 +28,16 @@ internal class TaggedQuestionsPresenter(private val component: MvpComponent,
                 .subscribe({ response ->
                     val itemCount = response.itemCount
                     val items = response.items
-                    if (itemCount > 0 && !items.isEmpty()) {
-                        val count = items.size
-                        offset += count
-                        view.showTagsLoadSuccess(items, itemCount > offset)
+                    if (items != null) {
+                        if (itemCount > 0 && !items.isEmpty()) {
+                            val count = items.size
+                            offset += count
+                            view.showTagsLoadSuccess(items, itemCount > offset)
+                        } else {
+                            view.showEmptyTags(component.context().getString(R.string.data_not_available))
+                        }
                     } else {
-                        view.showEmptyTags(component.context().getString(R.string.data_not_available))
+                        view.showTagsLoadError(component.context().getString(R.string.server_error))
                     }
 
                 }) { throwable ->
@@ -55,12 +59,16 @@ internal class TaggedQuestionsPresenter(private val component: MvpComponent,
                 .subscribe({ response ->
                     val itemCount = response.itemCount
                     val items = response.items
-                    if (itemCount > 0 && !items.isEmpty()) {
-                        val count = items.size
-                        offset += count
-                        view.showMoreTags(items, itemCount > offset)
+                    if (items != null) {
+                        if (itemCount > 0 && !items.isEmpty()) {
+                            val count = items.size
+                            offset += count
+                            view.showMoreTags(items, itemCount > offset)
+                        } else {
+                            view.onLoadComplete()
+                        }
                     } else {
-                        view.onLoadComplete()
+                        view.showLoadMoreError()
                     }
                 }) { /*Error*/ view.showLoadMoreError() }
 

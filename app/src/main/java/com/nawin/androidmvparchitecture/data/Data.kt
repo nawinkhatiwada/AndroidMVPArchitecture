@@ -1,15 +1,13 @@
 package com.nawin.androidmvparchitecture.data
 
-import com.nawin.androidmvparchitecture.R
 import com.nawin.androidmvparchitecture.data.local.LocalRepo
 import com.nawin.androidmvparchitecture.data.model.Tags
 import com.nawin.androidmvparchitecture.data.model.UserInfo
-import com.nawin.androidmvparchitecture.data.model.api.BaseResponse
 import com.nawin.androidmvparchitecture.data.remote.RemoteRepo
 import com.nawin.androidmvparchitecture.utils.NonNullMapper
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import java.util.HashMap
+import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 

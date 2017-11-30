@@ -13,7 +13,8 @@ class NonNullMapper<T> : Function<BaseResponse<T>, Single<T>> {
     @Throws(Exception::class)
     override fun apply(@NonNull baseResponse: BaseResponse<T>): Single<T> {
         if (baseResponse.statusCode != 1)
-            return Single.error(FailedResponseException(baseResponse.statusCode, baseResponse.statusMessage))
+            return Single.error(FailedResponseException(baseResponse.statusCode,
+                    baseResponse.statusMessage.toString()))
         val item = baseResponse.response
         return if (item == null)
             Single.error(NullPointerException("BaseResponse.Response == null"))

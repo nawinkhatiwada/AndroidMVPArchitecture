@@ -13,7 +13,7 @@ import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
 
-import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
+import static com.nawin.androidmvparchitecture.utils.CommonsKt.isNetworkAvailable;
 
 /**
  * Created on 9/15/17.

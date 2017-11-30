@@ -53,7 +53,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     public void showLoginSuccess() {
         dismissDialog();
-        TaggedQuestionsActivity.start(this);
+        TaggedQuestionsActivity.Companion.start(this);
         finish();
     }
 

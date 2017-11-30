@@ -17,7 +17,7 @@ import java.util.List;
  * Created by nawin on 6/14/17.
  */
 
-class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
+public class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
     private final List<TagItems> items;
     private final TaggedQuestionSelectionListener listener;
 
@@ -59,8 +59,8 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
         onItemsAdded(count, items.size(), hasMoreItems);
     }
 
-    interface TaggedQuestionSelectionListener {
-        void onTaggedQuestionSelected(List<TagItems> items);
+   public interface TaggedQuestionSelectionListener {
+      void onTaggedQuestionSelected(List<TagItems> items);
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {

@@ -27,7 +27,7 @@ internal constructor(private val localRepo: LocalRepo, private val remoteRepo: R
 
 
     fun requestLogin(username: String, password: String): Single<UserInfo> {
-        val params = HashMap<String, Any>(2)
+        val params = HashMap<String, String>(2)
         params.put("username", username)
         params.put("password", password)
         return remoteRepo.requestLogin(params)

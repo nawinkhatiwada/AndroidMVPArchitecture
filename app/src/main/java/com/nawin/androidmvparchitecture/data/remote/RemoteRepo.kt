@@ -12,8 +12,8 @@ import retrofit2.http.POST
  */
 interface RemoteRepo {
     @POST("?login")
-    fun requestLogin(@Body params: Map<String, Any>): Single<BaseResponse<UserInfo>>
+    fun requestLogin(@Body params: Map<String, String>): Single<BaseResponse<UserInfo>>
 
     @POST("?recentTags")
-    fun getTags(@Body params: Map<String, Any>): Single<BaseResponse<Tags>>
+    fun getTags(@Body params: Map<String, Int>): Single<BaseResponse<Tags>>
 }

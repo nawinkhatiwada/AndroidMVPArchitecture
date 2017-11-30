@@ -13,16 +13,16 @@ import javax.inject.Singleton
  * Created on 11/30/17.
  */
 
-@Singleton
-class ApiInterceptor @Inject
-constructor(private val context: Context) : Interceptor {
+    @Singleton
+    class ApiInterceptor @Inject
+    constructor(private val context: Context) : Interceptor {
 
-    @Throws(IOException::class)
-    override fun intercept(chain: Interceptor.Chain): Response {
-        if (!isNetworkAvailable(context)) {
-            throw NetworkNotAvailableException()
+        @Throws(IOException::class)
+        override fun intercept(chain: Interceptor.Chain): Response {
+            if (!isNetworkAvailable(context)) {
+                throw NetworkNotAvailableException()
+            }
+            val requestBuilder = chain.request().newBuilder()
+            return chain.proceed(requestBuilder.build())
         }
-        val requestBuilder = chain.request().newBuilder()
-        return chain.proceed(requestBuilder.build())
     }
-}

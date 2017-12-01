@@ -13,7 +13,7 @@ interface TaggedQuestionsContract {
     interface View : BaseView<Presenter> {
         fun showProgress()
 
-        fun showTagsLoadSuccess(items: List<TagItems>, hasMoreItems: Boolean)
+        fun showTagsLoadSuccess(items: MutableList<TagItems>, hasMoreItems: Boolean)
 
         fun showTagsLoadError(message: String)
 
@@ -21,7 +21,7 @@ interface TaggedQuestionsContract {
 
         fun showLoadMoreProgress()
 
-        fun showMoreTags(items: List<TagItems>, hasMoreItems: Boolean)
+        fun showMoreTags(items: MutableList<TagItems>, hasMoreItems: Boolean)
 
         fun showLoadMoreError()
 

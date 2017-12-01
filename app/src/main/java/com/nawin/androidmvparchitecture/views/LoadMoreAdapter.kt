@@ -22,8 +22,6 @@ constructor(private val recyclerView: RecyclerView,
     private var scrollListener: RecyclerView.OnScrollListener? = null
     private val loadMoreThreshold = DEFAULT_LOAD_MORE_THRESHOLD
 
-    abstract val itemCount_: Int
-
     init {
         val layoutManager = recyclerView.layoutManager
         if (layoutManager == null || layoutManager !is LinearLayoutManager) {
@@ -42,11 +40,11 @@ constructor(private val recyclerView: RecyclerView,
         this.scrollListener = object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 if (listener != null && loadPolicy.canLoadMore()) {
-                    if (linearLayoutManager.findLastVisibleItemPosition() >= itemCount_ - (loadMoreThreshold + 1)) {
+                    if (linearLayoutManager.findLastVisibleItemPosition() >= itemCount_() - (loadMoreThreshold + 1)) {
                         loadPolicy.setLoadStart()
                         listener.onLoadMore()
                         if (showLoading)
-                            recyclerView!!.post { notifyItemInserted(itemCount_) }
+                            recyclerView!!.post { notifyItemInserted(itemCount_()) }
                     }
                 }
             }
@@ -58,6 +56,8 @@ constructor(private val recyclerView: RecyclerView,
         if (scrollListener != null)
             this.recyclerView.removeOnScrollListener(scrollListener)
     }
+
+    abstract fun itemCount_(): Int
 
     abstract fun onCreateViewHolder_(inflater: LayoutInflater, parent: ViewGroup, viewType: Int): VH
 
@@ -80,7 +80,7 @@ constructor(private val recyclerView: RecyclerView,
     }
 
     override fun getItemCount(): Int {
-        return itemCount_ + if (showLoading && loadPolicy.isLoading) 1 else 0
+        return itemCount_() + if (showLoading && loadPolicy.isLoading) 1 else 0
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -90,7 +90,7 @@ constructor(private val recyclerView: RecyclerView,
     }
 
     fun hasItems(): Boolean {
-        return itemCount_ > 0
+        return itemCount_() > 0
     }
 
     protected fun onItemsAdded(from: Int, size: Int, hasMoreItems: Boolean) {
@@ -99,24 +99,23 @@ constructor(private val recyclerView: RecyclerView,
         else
             loadPolicy.onLoadComplete()
 
-        if (showLoading)
-            notifyItemChanged(itemCount_ - size)
-
-        notifyItemRangeChanged(from, size)
-
+        if (showLoading) {
+            notifyItemChanged(itemCount_() - size)
+        }
+        notifyItemRangeInserted(from, size)
     }
 
     fun onLoadComplete() {
         loadPolicy.onLoadComplete()
         if (showLoading) {
-            notifyItemRemoved(itemCount_)
+            notifyItemRemoved(itemCount_())
         }
     }
 
     fun onLoadError() {
         loadPolicy.onLoadFailed()
         if (showLoading)
-            notifyItemRemoved(itemCount_)
+            notifyItemRemoved(itemCount_())
     }
 
     fun reset(hasMoreItems: Boolean) {

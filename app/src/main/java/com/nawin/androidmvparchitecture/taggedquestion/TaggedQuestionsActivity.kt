@@ -69,7 +69,7 @@ class TaggedQuestionsActivity : BaseActivity(), TaggedQuestionsContract.View {
         progressDialog = showLoadingDialog(this)
     }
 
-    override fun showTagsLoadSuccess(items: List<TagItems>, hasMoreItems: Boolean) {
+    override fun showTagsLoadSuccess(items: MutableList<TagItems>, hasMoreItems: Boolean) {
         dismissDialog()
         var adapter: TaggedQuestionsAdapter?
         if (binding.rvTaggedQuestion.adapter != null) {
@@ -97,7 +97,7 @@ class TaggedQuestionsActivity : BaseActivity(), TaggedQuestionsContract.View {
 
     }
 
-    override fun showMoreTags(items: List<TagItems>, hasMoreItems: Boolean) {
+    override fun showMoreTags(items: MutableList<TagItems>, hasMoreItems: Boolean) {
         (binding.rvTaggedQuestion.adapter as TaggedQuestionsAdapter).addMoreItems(items, hasMoreItems)
     }
 

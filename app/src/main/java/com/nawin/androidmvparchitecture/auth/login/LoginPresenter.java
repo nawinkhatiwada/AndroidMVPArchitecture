@@ -29,7 +29,8 @@ class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void stop() {
-        disposable.dispose();
+        if (disposable != null && !disposable.isDisposed())
+            disposable.dispose();
     }
 
     @Override

@@ -4,6 +4,10 @@ import android.content.Context;
 
 import com.nawin.androidmvparchitecture.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.data.Data;
+import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
+import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
+import com.nawin.androidmvparchitecture.data.model.UserInfo;
 
 import org.junit.Before;
 import org.junit.Test;

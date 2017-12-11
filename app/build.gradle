@@ -7,7 +7,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.nawin.rxmvparchitecture"
+        applicationId "com.nawin.kotlinmvparchitecture"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
@@ -45,7 +45,6 @@ dependencies {
     })
     compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
     compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
-    testCompile 'junit:junit:4.12'
     kapt "com.android.databinding:compiler:$gradle_version"
 
 
@@ -70,7 +69,8 @@ dependencies {
     debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
     debugCompile "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
 
-    testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
     testCompile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
-
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.ext.kotlinVersion"
+    testCompile 'junit:junit:4.12'
 }

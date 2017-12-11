@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable
 /**
  * Created on 11/30/17.
  */
-internal class TaggedQuestionsPresenter(private val component: MvpComponent,
+ class TaggedQuestionsPresenter(private val component: MvpComponent,
                                         private val view: TaggedQuestionsContract.View)
     : TaggedQuestionsContract.Presenter {
 

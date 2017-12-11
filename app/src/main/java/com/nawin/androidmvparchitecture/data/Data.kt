@@ -16,7 +16,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class Data @Inject
-internal constructor(private val localRepo: LocalRepo, private val remoteRepo: RemoteRepo) {
+ constructor(private val localRepo: LocalRepo, private val remoteRepo: RemoteRepo) {
 
     val isLoggedIn: Boolean
         get() = localRepo.getUserInfo() != null

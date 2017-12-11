@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rx Android MVP</string>
+    <string name="app_name">Kotlin Android MVP</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>

@@ -71,6 +71,7 @@ dependencies {
 
     testCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
     testCompile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
-    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.ext.kotlinVersion"
+//    testCompile "org.jetbrains.kotlin:kotlin-test-junit:$rootProject.ext.kotlinVersion"
+    testCompile "com.nhaarman:mockito-kotlin-kt1.1:1.5.0"
     testCompile 'junit:junit:4.12'
 }

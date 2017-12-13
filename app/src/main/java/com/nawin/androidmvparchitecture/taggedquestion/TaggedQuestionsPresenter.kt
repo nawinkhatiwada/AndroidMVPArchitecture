@@ -28,7 +28,6 @@ import io.reactivex.disposables.Disposable
                 .subscribe({ response ->
                     val itemCount = response.itemCount
                     val items = response.items
-                    if (items != null) {
                         if (itemCount > 0 && !items.isEmpty()) {
                             val count = items.size
                             offset += count
@@ -36,9 +35,6 @@ import io.reactivex.disposables.Disposable
                         } else {
                             view.showEmptyTags(component.context().getString(R.string.data_not_available))
                         }
-                    } else {
-                        view.showTagsLoadError(component.context().getString(R.string.server_error))
-                    }
 
                 }) { throwable ->
                     when (throwable) {

@@ -9,9 +9,6 @@ import com.nawin.androidmvparchitecture.R
  * Created on 11/29/17.
  */
 
-fun isEmpty(list: List<*>?): Boolean {
-    return list == null || list.isEmpty()
-}
 
 fun isNetworkAvailable(context: Context): Boolean {
     val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -27,5 +24,5 @@ fun showLoadingDialog(context: Context, message: String): ProgressDialog {
     return progressDialog
 }
 
-fun showLoadingDialog(context: Context): ProgressDialog =
+fun  showLoadingDialog(context: Context): ProgressDialog =
         showLoadingDialog(context, context.getString(R.string.loading))

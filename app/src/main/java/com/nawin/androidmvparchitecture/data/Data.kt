@@ -16,7 +16,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class Data @Inject
- constructor(private val localRepo: LocalRepo, private val remoteRepo: RemoteRepo) {
+constructor(private val localRepo: LocalRepo, private val remoteRepo: RemoteRepo) {
 
     val isLoggedIn: Boolean
         get() = localRepo.getUserInfo() != null
@@ -30,7 +30,7 @@ class Data @Inject
         val params = HashMap<String, String>(2)
         params.put("username", username)
         params.put("password", password)
-        return remoteRepo.requestLogin(params)
+        return remoteRepo.requestLogin(mapOf("username" to username, "password" to password))
                 .flatMap(NonNullMapper())
                 .doOnSuccess { userInfo ->
                     localRepo.setUserInfo(userInfo)

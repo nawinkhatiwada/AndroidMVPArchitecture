@@ -47,7 +47,6 @@ class TaggedQuestionPresenterTest {
         val tags = Tags(itemCount, tagList)
         given(data.requestTags(1, 10)).willReturn(Single.just(tags))
         presenter.start()
-
         verify(view).showProgress()
         argumentCaptor<MutableList<TagItems>>()
                 .apply {

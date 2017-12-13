@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable
 /**
  * Created on 12/13/17.
  */
-internal class LoginPresenter(private val component: MvpComponent,
+internal class LoginPresenter constructor(private val component: MvpComponent,
                               private val view: LoginContract.View)
     : LoginContract.Presenter {
 

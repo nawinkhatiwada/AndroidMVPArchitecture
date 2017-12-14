@@ -10,5 +10,4 @@ gradlew.bat
 .idea
 /app/build
 *.apk
-/keystore
 mySigningConfigs

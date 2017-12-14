@@ -33,7 +33,6 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     TaggedQuestionsPresenter(Context context, TaggedQuestionsContract.View view) {
         this.context = context;
         this.view = view;
-        view.setPresenter(this);
     }
 
     @Override

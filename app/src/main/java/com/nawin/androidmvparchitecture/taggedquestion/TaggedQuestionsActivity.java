@@ -73,11 +73,6 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
-        this.presenter = presenter;
-    }
-
-    @Override
     public void showProgress() {
         progressDialog = Commons.showLoadingDialog(this);
     }

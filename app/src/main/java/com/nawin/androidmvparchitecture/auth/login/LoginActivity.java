@@ -80,10 +80,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Toast.makeText(this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void setPresenter(LoginContract.Presenter presenter) {
-        this.presenter = presenter;
-    }
 
     private void dismissDialog() {
         if (progressDialog != null && progressDialog.isShowing())

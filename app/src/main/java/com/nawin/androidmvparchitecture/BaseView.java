@@ -6,5 +6,4 @@ package com.nawin.androidmvparchitecture;
 
 public interface BaseView<T extends BasePresenter> {
 
-    void setPresenter(T presenter);
 }

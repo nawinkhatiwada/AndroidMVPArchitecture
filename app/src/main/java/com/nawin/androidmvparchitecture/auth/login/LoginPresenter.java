@@ -26,7 +26,6 @@ class LoginPresenter implements LoginContract.Presenter {
     LoginPresenter(Context context, LoginContract.View view) {
         this.view = view;
         this.context = context;
-        view.setPresenter(this);
     }
 
     @Override

@@ -13,6 +13,7 @@ Before starting, I assume
 2. **master** -> Implementation of MVP Architecture without using Dagger, RxJava, RxAndroid
 3. **mvp_with_rx_and_dagger** -> Implementation with Dagger2, RxJava, RxAndroid
 4. **mvp_with_rx_and_kotlin** ->  Implementation with Dagger2, RxJava, RxAndroid, Kotlin
+5. **Unit testing with Mockito**
 
   **MVC vs MVP**
   
@@ -40,6 +41,8 @@ The presenter acts upon the model and the view. It retrieves data from repositor
 [Dagger2](https://google.github.io/dagger/)
 
 [Kotlin for Android](https://kotlinlang.org/docs/reference/android-overview.html)
+
+[Unit tests with Mockito](http://www.vogella.com/tutorials/Mockito/article.html)
 
 [Model-View-Presenter: Android guidelines](https://medium.com/@cervonefrancesco/model-view-presenter-android-guidelines-94970b430ddf)
 

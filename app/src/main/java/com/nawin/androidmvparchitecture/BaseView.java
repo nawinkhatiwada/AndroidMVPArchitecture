@@ -5,5 +5,6 @@ package com.nawin.androidmvparchitecture;
  */
 
 public interface BaseView<T extends BasePresenter> extends ContextProvider {
+    void showNetworkNotAvailableError();
 
 }

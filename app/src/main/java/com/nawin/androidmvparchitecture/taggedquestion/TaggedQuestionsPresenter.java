@@ -25,26 +25,24 @@ import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
 
 class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     private final int LIMIT = 10;
-    private Context context;
     private TaggedQuestionsContract.View view;
     private Call<BaseResponse<Tags>> call;
     private int offset;
 
-    TaggedQuestionsPresenter(Context context, TaggedQuestionsContract.View view) {
-        this.context = context;
+    TaggedQuestionsPresenter(TaggedQuestionsContract.View view) {
         this.view = view;
     }
 
     @Override
     public void start() {
 
-        if (!isNetworkAvailable(context)) {
+        if (!isNetworkAvailable(view.getContext())) {
             view.showNetworkNotAvailableError();
             return;
         }
         view.showProgress();
         this.offset = 0;
-        call = Data.getInstance(context).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
+        call = Data.getInstance(view.getContext()).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
             @Override
             public void onResponse(Call<BaseResponse<Tags>> call, Response<BaseResponse<Tags>> response) {
                 if (response != null && response.isSuccessful()) {
@@ -55,16 +53,16 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
                         offset += count;
                         view.showTagsLoadSuccess(items, itemCount > offset);
                     } else {
-                        view.showEmptyTags(context.getString(R.string.data_not_available));
+                        view.showEmptyTags(view.getContext().getString(R.string.data_not_available));
                     }
                 } else {
-                    view.showTagsLoadError(context.getString(R.string.server_error));
+                    view.showTagsLoadError(view.getContext().getString(R.string.server_error));
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Tags>> call, Throwable t) {
-                view.showTagsLoadError(context.getString(R.string.server_error));
+                view.showTagsLoadError(view.getContext().getString(R.string.server_error));
             }
         });
     }
@@ -77,7 +75,7 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     @Override
     public void onLoadMore() {
         view.showLoadMoreProgress();
-        call = Data.getInstance(context).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
+        call = Data.getInstance(view.getContext()).requestTags(offset, LIMIT, new Callback<BaseResponse<Tags>>() {
 
             @Override
             public void onResponse(Call<BaseResponse<Tags>> call, Response<BaseResponse<Tags>> response) {
@@ -110,6 +108,6 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
 
     @Override
     public void onLogout() {
-        Data.getInstance(context).logout();
+        Data.getInstance(view.getContext()).logout();
     }
 }

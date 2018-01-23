@@ -21,11 +21,9 @@ import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
 class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private Call<BaseResponse<UserInfo>> call;
-    private final Context context;
 
-    LoginPresenter(Context context, LoginContract.View view) {
+    LoginPresenter( LoginContract.View view) {
         this.view = view;
-        this.context = context;
     }
 
     @Override
@@ -41,12 +39,12 @@ class LoginPresenter implements LoginContract.Presenter {
     @Override
     public void onLogin(String username, String password) {
 
-        if (!isNetworkAvailable(context)) {
+        if (!isNetworkAvailable(view.getContext())) {
             view.showNetworkNotAvailableError();
             return;
         }
         view.showLoginProgress();
-        call = Data.getInstance(context).requestLogin(username, password, new Callback<BaseResponse<UserInfo>>() {
+        call = Data.getInstance(view.getContext()).requestLogin(username, password, new Callback<BaseResponse<UserInfo>>() {
             @Override
             public void onResponse(Call<BaseResponse<UserInfo>> call, Response<BaseResponse<UserInfo>> response) {
                 if (response != null && response.isSuccessful()) {
@@ -57,13 +55,13 @@ class LoginPresenter implements LoginContract.Presenter {
                         view.showLoginError(response.body().getStatusMessage());
                     }
                 } else {
-                    view.showLoginError(context.getString(R.string.server_error));
+                    view.showLoginError(view.getContext().getString(R.string.server_error));
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<UserInfo>> call, Throwable t) {
-                view.showLoginError(context.getString(R.string.server_error));
+                view.showLoginError(view.getContext().getString(R.string.server_error));
             }
         });
     }

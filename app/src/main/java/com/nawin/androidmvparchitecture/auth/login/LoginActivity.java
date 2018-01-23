@@ -1,6 +1,7 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -22,7 +23,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        presenter = new LoginPresenter(this, this);
+        presenter = new LoginPresenter(this);
 
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
@@ -84,5 +85,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private void dismissDialog() {
         if (progressDialog != null && progressDialog.isShowing())
             progressDialog.dismiss();
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

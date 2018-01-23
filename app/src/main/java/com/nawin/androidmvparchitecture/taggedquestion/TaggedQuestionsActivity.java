@@ -2,9 +2,11 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -45,7 +47,7 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
             return;
         }
         rvTaggedQuestion = (RecyclerView) findViewById(R.id.rvTaggedQuestions);
-        presenter = new TaggedQuestionsPresenter(this, this);
+        presenter = new TaggedQuestionsPresenter(this);
         presenter.start();
     }
 
@@ -136,9 +138,15 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
 
     }
 
+
     private void dismissDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();
         }
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 }

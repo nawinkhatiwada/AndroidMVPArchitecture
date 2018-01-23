@@ -138,7 +138,6 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
 
     }
 
-
     private void dismissDialog() {
         if (progressDialog != null && progressDialog.isShowing()) {
             progressDialog.dismiss();

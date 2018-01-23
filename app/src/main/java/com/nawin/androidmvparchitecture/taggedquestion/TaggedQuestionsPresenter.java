@@ -1,8 +1,6 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 
-import android.content.Context;
-
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.model.TagItems;

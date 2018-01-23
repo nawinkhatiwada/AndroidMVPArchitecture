@@ -1,7 +1,5 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
-import android.support.annotation.StringRes;
-
 import com.nawin.androidmvparchitecture.BasePresenter;
 import com.nawin.androidmvparchitecture.BaseView;
 

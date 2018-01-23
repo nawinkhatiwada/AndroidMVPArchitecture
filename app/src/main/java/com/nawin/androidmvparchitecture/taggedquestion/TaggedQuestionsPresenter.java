@@ -53,16 +53,16 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
                         offset += count;
                         view.showTagsLoadSuccess(items, itemCount > offset);
                     } else {
-                        view.showEmptyTags(view.getContext().getString(R.string.data_not_available));
+                        view.showEmptyTags(R.string.data_not_available);
                     }
                 } else {
-                    view.showTagsLoadError(view.getContext().getString(R.string.server_error));
+                    view.showTagsLoadError(R.string.server_error);
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse<Tags>> call, Throwable t) {
-                view.showTagsLoadError(view.getContext().getString(R.string.server_error));
+                view.showTagsLoadError(R.string.server_error);
             }
         });
     }

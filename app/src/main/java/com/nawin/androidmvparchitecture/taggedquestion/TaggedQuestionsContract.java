@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
+import android.support.annotation.StringRes;
+
 import com.nawin.androidmvparchitecture.BasePresenter;
 import com.nawin.androidmvparchitecture.BaseView;
 import com.nawin.androidmvparchitecture.data.model.TagItems;
@@ -18,9 +20,9 @@ interface TaggedQuestionsContract {
 
         void showTagsLoadSuccess(List<TagItems> items, boolean hasMoreItems);
 
-        void showTagsLoadError(String message);
+        void showTagsLoadError(@StringRes int message);
 
-        void showEmptyTags(String message);
+        void showEmptyTags(@StringRes int message);
 
         void showLoadMoreProgress();
 

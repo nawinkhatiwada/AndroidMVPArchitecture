@@ -93,13 +93,13 @@ public class TaggedQuestionsActivity extends AppCompatActivity implements Tagged
     }
 
     @Override
-    public void showTagsLoadError(String message) {
+    public void showTagsLoadError(@StringRes int message) {
         dismissDialog();
         Toast.makeText(TaggedQuestionsActivity.this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showEmptyTags(String message) {
+    public void showEmptyTags(@StringRes int message) {
         dismissDialog();
         Toast.makeText(TaggedQuestionsActivity.this, message, Toast.LENGTH_SHORT).show();
     }

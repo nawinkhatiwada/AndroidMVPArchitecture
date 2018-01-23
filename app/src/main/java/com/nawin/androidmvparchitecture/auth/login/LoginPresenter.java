@@ -22,7 +22,7 @@ class LoginPresenter implements LoginContract.Presenter {
     private LoginContract.View view;
     private Call<BaseResponse<UserInfo>> call;
 
-    LoginPresenter( LoginContract.View view) {
+    LoginPresenter(LoginContract.View view) {
         this.view = view;
     }
 

@@ -3,6 +3,7 @@ package com.nawin.androidmvparchitecture.auth.login;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -72,7 +73,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void showLoginError(String message) {
         dismissDialog();
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-
     }
 
     @Override

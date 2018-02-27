@@ -32,7 +32,7 @@ class TaggedQuestionsActivity : BaseActivity(), TaggedQuestionsContract.View {
             finish()
             return
         }
-        presenter = TaggedQuestionsPresenter(component, this)
+       TaggedQuestionsPresenter(component, this)
     }
 
     override fun onResume() {

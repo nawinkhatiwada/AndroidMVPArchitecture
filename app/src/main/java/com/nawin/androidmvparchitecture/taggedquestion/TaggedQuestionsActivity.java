@@ -44,7 +44,7 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
             finish();
             return;
         }
-        presenter = new TaggedQuestionsPresenter(component, this);
+        new TaggedQuestionsPresenter(component, this);
     }
 
     @Override

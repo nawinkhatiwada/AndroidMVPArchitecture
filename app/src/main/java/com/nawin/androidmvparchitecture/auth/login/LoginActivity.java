@@ -22,7 +22,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-        presenter = new LoginPresenter(component, this);
+        new LoginPresenter(component, this);
 
         binding.btnLogin.setOnClickListener(v -> {
             String username = binding.etUsername.getText().toString();

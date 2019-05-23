@@ -48,7 +48,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
 
         this.scrollListener = new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 if (listener != null && loadPolicy.canLoadMore()) {
                     if (linearLayoutManager.findLastVisibleItemPosition() >=
                             (getItemCount_() - (loadMoreThreshold + 1))) {
@@ -78,7 +78,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_BOTTOM_PROGRESS) {
             return new BottomProgressViewHolder(layoutInflater.inflate(R.layout.layout_bottom_progress, parent, false));
         }
@@ -87,7 +87,7 @@ public abstract class LoadMoreAdapter<VH extends RecyclerView.ViewHolder> extend
 
     @Override
     @SuppressWarnings("unchecked")
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (!(showLoading && loadPolicy.isLoading && position == (getItemCount() - 1))) {
             onBindViewHolder_((VH) holder, position);
         }

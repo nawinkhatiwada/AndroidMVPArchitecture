@@ -5,7 +5,6 @@ apply from: '../signing.gradle'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
         applicationId "com.nawin.rxmvparchitecture"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -13,6 +12,7 @@ android {
         versionCode 2
         versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -28,45 +28,51 @@ android {
         }
 
     }
-    sourceSets { debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] } }
-    compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+    sourceSets {
+        debug { java.srcDirs = ['src/debug/java', 'src/debug/java/'] }
     }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
     dataBinding{
-        enabled = true;
+        enabled = true
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    compile "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
-    testCompile 'junit:junit:4.12'
+    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutVersion"
+    testImplementation 'junit:junit:4.13-beta-3'
 
-    compile "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
-    compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
-    compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
-    compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    compile "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttpVersion"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofitVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.ext.supportLibraryVersion"
 
 //    Dagger library
-    compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    implementation "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
 //    Rx java and RX android
-    compile "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
-    compile "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
-    compile "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.ext.rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.ext.rxJavaVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofitVersion"
 
-    debugCompile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
-    debugCompile "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
-    debugCompile "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
+    debugImplementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttpVersion"
+    debugImplementation "com.facebook.stetho:stetho:$rootProject.ext.stethoVersion"
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:$rootProject.ext.stethoVersion"
 
-    testCompile "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
-    testCompile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
+    testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoVersion"
+    testImplementation "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
+
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.5.6'
 
 }

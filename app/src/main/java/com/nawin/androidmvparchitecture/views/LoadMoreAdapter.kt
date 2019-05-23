@@ -38,23 +38,24 @@ constructor(private val recyclerView: RecyclerView,
         }
 
         this.scrollListener = object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (listener != null && loadPolicy.canLoadMore()) {
                     if (linearLayoutManager.findLastVisibleItemPosition() >= itemCount_() - (loadMoreThreshold + 1)) {
                         loadPolicy.setLoadStart()
                         listener.onLoadMore()
                         if (showLoading)
-                            recyclerView!!.post { notifyItemInserted(itemCount_()) }
+                            recyclerView.post { notifyItemInserted(itemCount_()) }
                     }
                 }
             }
         }
-        this.recyclerView.addOnScrollListener(this.scrollListener)
+        this.recyclerView.addOnScrollListener(this.scrollListener as RecyclerView.OnScrollListener)
     }
 
     fun detachLoadMore() {
-        if (scrollListener != null)
-            this.recyclerView.removeOnScrollListener(scrollListener)
+            scrollListener?.let {
+                this.recyclerView.removeOnScrollListener(it)
+            }
     }
 
     abstract fun itemCount_(): Int
@@ -166,14 +167,13 @@ constructor(private val recyclerView: RecyclerView,
         }
 
         companion object {
-
-            private val MAX_RETRY_POLICY_FAIL_COUNT = 3
+            private const val MAX_RETRY_POLICY_FAIL_COUNT = 3
         }
     }
 
     companion object {
 
-        private val DEFAULT_LOAD_MORE_THRESHOLD = 0
-        private val VIEW_TYPE_BOTTOM_PROGRESS = -0x21523f22
+        private const val DEFAULT_LOAD_MORE_THRESHOLD = 0
+        private const val VIEW_TYPE_BOTTOM_PROGRESS = -0x21523f22
     }
 }

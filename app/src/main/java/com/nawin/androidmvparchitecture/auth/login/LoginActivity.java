@@ -5,8 +5,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.nawin.androidmvparchitecture.BR;
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
+import com.nawin.androidmvparchitecture.data.model.viewmodel.LoginViewModel;
 import com.nawin.androidmvparchitecture.databinding.ActivityLoginBinding;
 import com.nawin.androidmvparchitecture.taggedquestion.container.TaggedQuestionsActivity;
 import com.nawin.androidmvparchitecture.utils.Commons;
@@ -53,9 +55,10 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     @Override
-    public void showLoginSuccess() {
+    public void showLoginSuccess(LoginViewModel loginViewModel) {
         dismissDialog();
-        TaggedQuestionsActivity.start(this);
+        this.binding.setVariable(BR.data, loginViewModel);
+        TaggedQuestionsActivity.start(this, loginViewModel.getUsername());
         finish();
     }
 

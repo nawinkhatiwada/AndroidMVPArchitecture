@@ -1,6 +1,8 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 
+import com.nawin.androidmvparchitecture.data.model.Tags;
+import com.nawin.androidmvparchitecture.data.model.viewmodel.TaggedQuestionViewModel;
 import com.nawin.androidmvparchitecture.di.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
@@ -41,7 +43,9 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
                     if (itemCount > 0 && !isEmpty(items)) {
                         final int count = items.size();
                         offset += count;
-                        view.showTagsLoadSuccess(items, itemCount > offset);
+
+                        List<TaggedQuestionViewModel> viewModel =  Tags.toViewModels(items);
+                        view.showTagsLoadSuccess(viewModel, itemCount > offset);
                     } else {
                         view.showEmptyTags(component.context().getString(R.string.data_not_available));
                     }
@@ -70,10 +74,13 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
                     if (response != null) {
                         int itemCount = response.getItemCount();
                         List<TagItems> items = response.getItems();
+
+
                         if (itemCount > 0 && !isEmpty(items)) {
                             final int count = items.size();
                             offset += count;
-                            view.showMoreTags(items, itemCount > offset);
+                           List<TaggedQuestionViewModel> viewModel = Tags.toViewModels(items);
+                            view.showMoreTags(viewModel, itemCount > offset);
                         } else {
                             view.onLoadComplete();
                         }
@@ -90,6 +97,7 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     }
 
     @Override
-    public void onTaggedQuestionSelected(List<TagItems> items) {
+    public void onTaggedQuestionSelected(List<TaggedQuestionViewModel> items) {
+
     }
 }

@@ -54,7 +54,7 @@ public class LoginPresenterTest {
                 .thenReturn(Single.just(new UserInfo()));
         presenter.onLogin("nawin", "khatiwada");
         verify(view).showLoginProgress();
-        verify(view).showLoginSuccess();
+        verify(view).showLoginSuccess(loginViewModel);
     }
 
     @Test

@@ -32,8 +32,11 @@ public class Commons {
 
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        return networkInfo != null && (networkInfo.isConnected());
+        if(connectivityManager != null) {
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null && (networkInfo.isConnected());
+        }
+        return false;
     }
 
     public static ProgressDialog showLoadingDialog(Context context, String message) {

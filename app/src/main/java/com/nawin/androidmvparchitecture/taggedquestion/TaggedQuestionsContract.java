@@ -2,7 +2,7 @@ package com.nawin.androidmvparchitecture.taggedquestion;
 
 import com.nawin.androidmvparchitecture.BasePresenter;
 import com.nawin.androidmvparchitecture.BaseView;
-import com.nawin.androidmvparchitecture.data.model.TagItems;
+import com.nawin.androidmvparchitecture.data.model.viewmodel.TaggedQuestionViewModel;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public interface TaggedQuestionsContract {
     interface View extends BaseView<Presenter> {
         void showProgress();
 
-        void showTagsLoadSuccess(List<TagItems> items, boolean hasMoreItems);
+        void showTagsLoadSuccess(List<TaggedQuestionViewModel> items, boolean hasMoreItems);
 
         void showTagsLoadError(String message);
 
@@ -24,7 +24,7 @@ public interface TaggedQuestionsContract {
 
         void showLoadMoreProgress();
 
-        void showMoreTags(List<TagItems> items, boolean hasMoreItems);
+        void showMoreTags(List<TaggedQuestionViewModel> items, boolean hasMoreItems);
 
         void showLoadMoreError();
 

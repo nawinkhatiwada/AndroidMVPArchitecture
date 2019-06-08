@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.nawin.androidmvparchitecture.BaseFragment;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
-import com.nawin.androidmvparchitecture.data.model.TagItems;
+import com.nawin.androidmvparchitecture.data.model.viewmodel.TaggedQuestionViewModel;
 import com.nawin.androidmvparchitecture.databinding.FragmentTaggedQuestionsBinding;
 import com.nawin.androidmvparchitecture.utils.Commons;
 
@@ -83,7 +83,7 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
     }
 
     @Override
-    public void showTagsLoadSuccess(List<TagItems> taggedQuestions, boolean hasMoreItems) {
+    public void showTagsLoadSuccess(List<TaggedQuestionViewModel> taggedQuestions, boolean hasMoreItems) {
         dismissDialog();
         TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter();
         if (adapter != null)
@@ -113,7 +113,7 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
     }
 
     @Override
-    public void showMoreTags(List<TagItems> items, boolean hasMoreItems) {
+    public void showMoreTags(List<TaggedQuestionViewModel> items, boolean hasMoreItems) {
         TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter)binding.rvTaggedQuestion.getAdapter();
         if (adapter != null) {
             adapter.addMoreItems(items, hasMoreItems);

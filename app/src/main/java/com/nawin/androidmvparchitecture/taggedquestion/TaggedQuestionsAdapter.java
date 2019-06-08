@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.nawin.androidmvparchitecture.R;
-import com.nawin.androidmvparchitecture.data.model.TagItems;
+import com.nawin.androidmvparchitecture.data.model.viewmodel.TaggedQuestionViewModel;
 import com.nawin.androidmvparchitecture.databinding.ViewHolderTaggedQuestionItemsBinding;
 import com.nawin.androidmvparchitecture.views.LoadMoreAdapter;
 
@@ -18,11 +18,11 @@ import java.util.List;
  */
 
 class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
-    private final List<TagItems> items;
+    private final List<TaggedQuestionViewModel> items;
     private final TaggedQuestionSelectionListener listener;
 
     TaggedQuestionsAdapter(@NonNull RecyclerView recyclerView,
-                           List<TagItems> taggedQuestions,
+                           List<TaggedQuestionViewModel> taggedQuestions,
                            TaggedQuestionSelectionListener listener) {
         super(recyclerView);
         this.items = taggedQuestions;
@@ -53,14 +53,14 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
         holder.binding.executePendingBindings();
     }
 
-    void addMoreItems(List<TagItems> items, boolean hasMoreItems) {
+    void addMoreItems(List<TaggedQuestionViewModel> items, boolean hasMoreItems) {
         final int count = this.items.size();
         this.items.addAll(items);
         onItemsAdded(count, items.size(), hasMoreItems);
     }
 
     interface TaggedQuestionSelectionListener {
-        void onTaggedQuestionSelected(List<TagItems> items);
+        void onTaggedQuestionSelected(List<TaggedQuestionViewModel> items);
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {

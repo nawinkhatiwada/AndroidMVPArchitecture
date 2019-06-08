@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
+import com.nawin.androidmvparchitecture.data.model.UserInfo;
+import com.nawin.androidmvparchitecture.data.model.viewmodel.LoginViewModel;
 import com.nawin.androidmvparchitecture.di.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
@@ -38,13 +40,17 @@ class LoginPresenter implements LoginContract.Presenter {
     public void onLogin(String username, String password) {
         view.showLoginProgress();
         disposable = component.data().requestLogin(username, password)
-                .subscribe(userInfo -> view.showLoginSuccess(), throwable -> {
-                    if (throwable instanceof FailedResponseException)
-                        view.showLoginError(throwable.getMessage());
-                    else if (throwable instanceof NetworkNotAvailableException)
-                        view.showNetworkNotAvailableError();
-                    else
-                        view.showLoginError(component.context().getString(R.string.server_error));
-                });
+                .subscribe(userInfo ->{
+                    LoginViewModel loginViewModel = UserInfo.mapToViewModel(userInfo);
+                    view.showLoginSuccess(loginViewModel);
+                        },
+                        throwable -> {
+                            if (throwable instanceof FailedResponseException)
+                                view.showLoginError(throwable.getMessage());
+                            else if (throwable instanceof NetworkNotAvailableException)
+                                view.showNetworkNotAvailableError();
+                            else
+                                view.showLoginError(component.context().getString(R.string.server_error));
+                        });
     }
 }

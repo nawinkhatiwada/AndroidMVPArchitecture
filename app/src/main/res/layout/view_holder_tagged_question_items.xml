@@ -3,7 +3,7 @@
     <data>
         <variable
             name="tag"
-            type="com.nawin.androidmvparchitecture.data.model.TagItems">
+            type="com.nawin.androidmvparchitecture.data.model.viewmodel.TaggedQuestionViewModel">
         </variable>
     </data>
 

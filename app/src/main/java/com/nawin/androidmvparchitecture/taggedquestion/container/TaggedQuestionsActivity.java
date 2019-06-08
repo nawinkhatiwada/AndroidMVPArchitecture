@@ -16,8 +16,10 @@ import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsFragment;
 
 public class TaggedQuestionsActivity extends BaseActivity {
 
-    public static void start(Activity activity) {
+    private static String KEY_USERNAME  = "_username";
+    public static void start(Activity activity, String username) {
         Intent intent = new Intent(activity, TaggedQuestionsActivity.class);
+        intent.putExtra(KEY_USERNAME,username);
         activity.startActivity(intent);
     }
 
@@ -25,6 +27,8 @@ public class TaggedQuestionsActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DataBindingUtil.setContentView(this, R.layout.activity_tagged_questions);
+        String username = getIntent().getStringExtra(KEY_USERNAME);
+
        getSupportFragmentManager().beginTransaction()
                .replace(R.id.container, TaggedQuestionsFragment.getInstance())
                .commit();

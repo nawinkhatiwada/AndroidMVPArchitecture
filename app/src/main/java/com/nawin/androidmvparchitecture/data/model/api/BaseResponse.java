@@ -1,15 +1,17 @@
 package com.nawin.androidmvparchitecture.data.model.api;
 
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by nawin on 6/14/17.
  */
 
 public class BaseResponse<T> {
 
-    private String statusMessage;
-    private int statusCode;
-    private T response;
+    @SerializedName("statusMessage") private String statusMessage;
+    @SerializedName("statusCode") private int statusCode;
+    @SerializedName("response") private T response;
 
     public int getStatusCode() {
         return statusCode;

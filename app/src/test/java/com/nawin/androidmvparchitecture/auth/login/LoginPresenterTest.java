@@ -2,7 +2,7 @@ package com.nawin.androidmvparchitecture.auth.login;
 
 import android.content.Context;
 
-import com.nawin.androidmvparchitecture.MvpComponent;
+import com.nawin.androidmvparchitecture.di.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.Data;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;

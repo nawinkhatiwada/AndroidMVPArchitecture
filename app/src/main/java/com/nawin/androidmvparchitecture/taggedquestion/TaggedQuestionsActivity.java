@@ -20,12 +20,16 @@ import com.nawin.androidmvparchitecture.utils.Commons;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 /**
  * Created by nawin on 6/14/17.
  */
 
 public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuestionsContract.View {
-    private TaggedQuestionsContract.Presenter presenter;
+
+    @Inject
+    TaggedQuestionsContract.Presenter presenter;
     private ActivityTaggedQuestionsBinding binding;
     private ProgressDialog progressDialog;
 
@@ -44,7 +48,6 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
             finish();
             return;
         }
-        new TaggedQuestionsPresenter(component, this);
     }
 
     @Override
@@ -74,11 +77,6 @@ public class TaggedQuestionsActivity extends BaseActivity implements TaggedQuest
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void setPresenter(TaggedQuestionsContract.Presenter presenter) {
-        this.presenter = presenter;
     }
 
     @Override

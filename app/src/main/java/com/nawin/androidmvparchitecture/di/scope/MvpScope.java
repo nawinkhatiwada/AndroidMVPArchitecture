@@ -1,4 +1,4 @@
-package com.nawin.androidmvparchitecture;
+package com.nawin.androidmvparchitecture.di.scope;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,5 +10,5 @@ import javax.inject.Scope;
  */
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
- @interface MvpScope {
+ public @interface MvpScope {
 }

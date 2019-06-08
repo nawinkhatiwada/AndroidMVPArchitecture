@@ -1,7 +1,7 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 
-import com.nawin.androidmvparchitecture.MvpComponent;
+import com.nawin.androidmvparchitecture.di.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
 import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
@@ -28,33 +28,33 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     TaggedQuestionsPresenter(MvpComponent component, TaggedQuestionsContract.View view) {
         this.component = component;
         this.view = view;
-        view.setPresenter(this);
     }
 
     @Override
     public void start() {
         view.showProgress();
         this.offset = 1;
-        disposable = component.data().requestTags(offset, LIMIT).subscribe(response -> {
-            int itemCount = response.getItemCount();
-            List<TagItems> items = response.getItems();
-            if (itemCount > 0 && !isEmpty(items)) {
-                final int count = items.size();
-                offset += count;
-                view.showTagsLoadSuccess(items, itemCount > offset);
-            } else {
-                view.showEmptyTags(component.context().getString(R.string.data_not_available));
-            }
+        disposable = component.data().requestTags(offset, LIMIT)
+                .subscribe(response -> {
+                    int itemCount = response.getItemCount();
+                    List<TagItems> items = response.getItems();
+                    if (itemCount > 0 && !isEmpty(items)) {
+                        final int count = items.size();
+                        offset += count;
+                        view.showTagsLoadSuccess(items, itemCount > offset);
+                    } else {
+                        view.showEmptyTags(component.context().getString(R.string.data_not_available));
+                    }
 
-        }, throwable -> {
-            if (throwable instanceof FailedResponseException) {
-                view.showTagsLoadError(throwable.getMessage());
-            } else if (throwable instanceof NetworkNotAvailableException) {
-                view.showNetworkNotAvailableError();
-            } else {
-                view.showTagsLoadError(component.context().getString(R.string.server_error));
-            }
-        });
+                }, throwable -> {
+                    if (throwable instanceof FailedResponseException) {
+                        view.showTagsLoadError(throwable.getMessage());
+                    } else if (throwable instanceof NetworkNotAvailableException) {
+                        view.showNetworkNotAvailableError();
+                    } else {
+                        view.showTagsLoadError(component.context().getString(R.string.server_error));
+                    }
+                });
     }
 
     @Override

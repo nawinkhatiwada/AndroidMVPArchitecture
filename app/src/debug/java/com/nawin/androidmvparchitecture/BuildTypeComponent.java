@@ -1,5 +1,7 @@
 package com.nawin.androidmvparchitecture;
 
+import com.nawin.androidmvparchitecture.di.scope.MvpScope;
+
 import dagger.Subcomponent;
 
 /**

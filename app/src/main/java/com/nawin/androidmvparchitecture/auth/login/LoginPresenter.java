@@ -1,6 +1,6 @@
 package com.nawin.androidmvparchitecture.auth.login;
 
-import com.nawin.androidmvparchitecture.MvpComponent;
+import com.nawin.androidmvparchitecture.di.MvpComponent;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.data.error.FailedResponseException;
 import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
@@ -8,7 +8,6 @@ import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 import io.reactivex.disposables.Disposable;
 
 import static com.nawin.androidmvparchitecture.utils.Commons.dispose;
-import static com.nawin.androidmvparchitecture.utils.Commons.isNetworkAvailable;
 
 /**
  * Created by nawin on 6/13/17.
@@ -22,7 +21,7 @@ class LoginPresenter implements LoginContract.Presenter {
     LoginPresenter(MvpComponent component, LoginContract.View view) {
         this.view = view;
         this.component = component;
-        view.setPresenter(this);
+//        view.setPresenter(this);
     }
 
     @Override

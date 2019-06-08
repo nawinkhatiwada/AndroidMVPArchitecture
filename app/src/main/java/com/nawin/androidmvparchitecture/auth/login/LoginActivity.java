@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.nawin.androidmvparchitecture.BaseActivity;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.databinding.ActivityLoginBinding;
-import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
+import com.nawin.androidmvparchitecture.taggedquestion.container.TaggedQuestionsActivity;
 import com.nawin.androidmvparchitecture.utils.Commons;
 
 import javax.inject.Inject;
@@ -25,7 +25,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
-//        new LoginPresenter(component, this);
 
         binding.btnLogin.setOnClickListener(v -> {
             String username = binding.etUsername.getText().toString();
@@ -72,11 +71,6 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         dismissDialog();
         Toast.makeText(this, getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
     }
-
-//    @Override
-//    public void setPresenter(LoginContract.Presenter presenter) {
-//        this.presenter = presenter;
-//    }
 
     private void dismissDialog() {
         if (progressDialog != null && progressDialog.isShowing())

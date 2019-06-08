@@ -11,7 +11,7 @@ import java.util.List;
  * Created by nawin on 6/14/17.
  */
 
-interface TaggedQuestionsContract {
+public interface TaggedQuestionsContract {
 
     interface View extends BaseView<Presenter> {
         void showProgress();

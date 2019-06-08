@@ -1,6 +1,7 @@
 package com.nawin.androidmvparchitecture.data.remote;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.nawin.androidmvparchitecture.data.error.NetworkNotAvailableException;
 
@@ -24,12 +25,13 @@ public class ApiInterceptor implements Interceptor {
     private Context context;
 
     @Inject
-    public ApiInterceptor(Context context) {
+    ApiInterceptor(Context context) {
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public Response intercept(Chain chain) throws IOException {
+    public Response intercept(@NonNull Chain chain) throws IOException {
         if (!isNetworkAvailable(context)) {
             throw new NetworkNotAvailableException();
         }

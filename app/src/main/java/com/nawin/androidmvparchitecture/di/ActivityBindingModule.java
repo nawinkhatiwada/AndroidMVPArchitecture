@@ -3,8 +3,8 @@ package com.nawin.androidmvparchitecture.di;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivityModule;
 import com.nawin.androidmvparchitecture.di.scope.ActivityScope;
-import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionModule;
-import com.nawin.androidmvparchitecture.taggedquestion.TaggedQuestionsActivity;
+import com.nawin.androidmvparchitecture.taggedquestion.container.TaggedQuestionActivityModule;
+import com.nawin.androidmvparchitecture.taggedquestion.container.TaggedQuestionsActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -17,6 +17,6 @@ abstract class ActivityBindingModule {
     abstract LoginActivity loginActivity();
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = TaggedQuestionModule.class)
+    @ContributesAndroidInjector(modules = {TaggedQuestionActivityModule.class, FragmentBindingModule.class})
     abstract TaggedQuestionsActivity taggedQuestionsActivity();
 }

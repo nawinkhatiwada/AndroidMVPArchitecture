@@ -50,4 +50,11 @@ public class Commons {
     public static ProgressDialog showLoadingDialog(Context context) {
         return showLoadingDialog(context, context.getString(R.string.loading));
     }
+
+    public static <T> T checkNotNull(T value, String message) {
+        if (value == null) {
+            throw new NullPointerException(message);
+        }
+        return value;
+    }
 }

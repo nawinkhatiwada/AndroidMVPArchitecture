@@ -1,7 +1,6 @@
 package com.nawin.androidmvparchitecture.taggedquestion;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -13,14 +12,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.BaseFragment;
 import com.nawin.androidmvparchitecture.R;
 import com.nawin.androidmvparchitecture.auth.login.LoginActivity;
 import com.nawin.androidmvparchitecture.data.model.viewmodel.TaggedQuestionViewModel;
 import com.nawin.androidmvparchitecture.databinding.FragmentTaggedQuestionsBinding;
-import com.nawin.androidmvparchitecture.utils.Commons;
 
 import java.util.List;
 
@@ -37,7 +34,6 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
     }
     @Inject
     TaggedQuestionsContract.Presenter presenter;
-    private ProgressDialog progressDialog;
     private FragmentTaggedQuestionsBinding binding;
 
     @Override
@@ -61,6 +57,7 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
                 getActivity().finish();
             }
         }
+        binding.contentState.setContent(binding.content);
         return binding.getRoot();
     }
 
@@ -79,12 +76,11 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
 
     @Override
     public void showProgress() {
-        progressDialog = Commons.showLoadingDialog(requireContext());
+        binding.contentState.showProgress("Please wait...");
     }
 
     @Override
     public void showTagsLoadSuccess(List<TaggedQuestionViewModel> taggedQuestions, boolean hasMoreItems) {
-        dismissDialog();
         TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter();
         if (adapter != null)
             adapter.detachLoadMore();
@@ -93,18 +89,17 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
         if (hasMoreItems)
             adapter.attachLoadMore(presenter);
         binding.rvTaggedQuestion.setAdapter(adapter);
+        binding.contentState.showContent();
     }
 
     @Override
     public void showTagsLoadError(String message) {
-        dismissDialog();
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+        binding.contentState.showError(R.drawable.ic_error,message);
     }
 
     @Override
     public void showEmptyTags(String message) {
-        dismissDialog();
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show();
+        binding.contentState.showError(message);
     }
 
     @Override
@@ -149,15 +144,8 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
 
     @Override
     public void showNetworkNotAvailableError() {
-        dismissDialog();
-        Toast.makeText(requireContext(), getString(R.string.network_not_available_error), Toast.LENGTH_SHORT).show();
+        binding.contentState.showError(R.drawable.ic_error,getString(R.string.network_not_available_error));
 
-    }
-
-    private void dismissDialog() {
-        if (progressDialog!= null && progressDialog.isShowing()) {
-            progressDialog.dismiss();
-        }
     }
 
     @Override

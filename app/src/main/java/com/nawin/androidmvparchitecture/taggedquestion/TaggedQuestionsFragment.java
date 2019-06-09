@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.nawin.androidmvparchitecture.BaseFragment;
 import com.nawin.androidmvparchitecture.R;
@@ -80,6 +81,11 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
     }
 
     @Override
+    public void showNetworkNotAvailableError() {
+        binding.contentState.showError(R.drawable.ic_error,getString(R.string.network_not_available_error));
+    }
+
+    @Override
     public void showTagsLoadSuccess(List<TaggedQuestionViewModel> taggedQuestions, boolean hasMoreItems) {
         TaggedQuestionsAdapter adapter = (TaggedQuestionsAdapter) binding.rvTaggedQuestion.getAdapter();
         if (adapter != null)
@@ -132,20 +138,18 @@ public class TaggedQuestionsFragment extends BaseFragment implements TaggedQuest
     }
 
     @Override
+    public void onRecyclerItemClicked(TaggedQuestionViewModel taggedQuestionViewModel, int position) {
+        Toast.makeText(requireContext(), "Clicked position: "+position, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void onLogoutSelection() {
         presenter.onLogout();
-
         Activity activity = getActivity();
         if (activity != null) {
             startActivity(new Intent(activity, LoginActivity.class));
             activity.finish();
         }
-    }
-
-    @Override
-    public void showNetworkNotAvailableError() {
-        binding.contentState.showError(R.drawable.ic_error,getString(R.string.network_not_available_error));
-
     }
 
     @Override

@@ -33,11 +33,13 @@ public interface TaggedQuestionsContract {
         void onLogoutSelection();
 
         void showNetworkNotAvailableError();
+
+        void onRecyclerItemClicked(TaggedQuestionViewModel taggedQuestionViewModel, int position);
     }
 
     interface Presenter extends BasePresenter,
             LoadMoreAdapter.LoadMoreListener,
-            TaggedQuestionsAdapter.TaggedQuestionSelectionListener {
+            TaggedQuestionsAdapter.RecyclerItemClickListener {
         void onLogout();
     }
 }

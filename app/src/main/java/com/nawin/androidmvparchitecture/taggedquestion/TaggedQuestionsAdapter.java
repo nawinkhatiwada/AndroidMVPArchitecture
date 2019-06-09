@@ -19,11 +19,11 @@ import java.util.List;
 
 class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.TaggedQuestionsHolder> {
     private final List<TaggedQuestionViewModel> items;
-    private final TaggedQuestionSelectionListener listener;
+    private final RecyclerItemClickListener listener;
 
     TaggedQuestionsAdapter(@NonNull RecyclerView recyclerView,
                            List<TaggedQuestionViewModel> taggedQuestions,
-                           TaggedQuestionSelectionListener listener) {
+                           RecyclerItemClickListener listener) {
         super(recyclerView);
         this.items = taggedQuestions;
         this.listener = listener;
@@ -48,7 +48,7 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
 
         holder.binding.getRoot().setOnClickListener(v -> {
             if (items != null)
-                listener.onTaggedQuestionSelected(items);
+                listener.onRecyclerItemClicked(items.get(position), position);
         });
         holder.binding.executePendingBindings();
     }
@@ -59,8 +59,8 @@ class TaggedQuestionsAdapter extends LoadMoreAdapter<TaggedQuestionsAdapter.Tagg
         onItemsAdded(count, items.size(), hasMoreItems);
     }
 
-    interface TaggedQuestionSelectionListener {
-        void onTaggedQuestionSelected(List<TaggedQuestionViewModel> items);
+    interface RecyclerItemClickListener {
+        void onRecyclerItemClicked(TaggedQuestionViewModel items, int position);
     }
 
     static class TaggedQuestionsHolder extends RecyclerView.ViewHolder {

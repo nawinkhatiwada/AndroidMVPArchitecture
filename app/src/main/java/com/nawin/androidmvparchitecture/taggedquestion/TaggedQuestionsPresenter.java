@@ -97,7 +97,7 @@ class TaggedQuestionsPresenter implements TaggedQuestionsContract.Presenter {
     }
 
     @Override
-    public void onTaggedQuestionSelected(List<TaggedQuestionViewModel> items) {
-
+    public void onRecyclerItemClicked(TaggedQuestionViewModel taggedQuestionViewModel, int position) {
+        view.onRecyclerItemClicked(taggedQuestionViewModel, position);
     }
 }

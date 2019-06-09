@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="tag"
@@ -24,7 +24,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
+                android:textStyle="bold"
                 android:maxLines="1"
+                tools:text="Title"
                 android:text="@{tag.title}" />
 
             <TextView
@@ -32,6 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_normal"
+                tools:text="Description"
                 android:text="@{tag.description}" />
         </LinearLayout>
 

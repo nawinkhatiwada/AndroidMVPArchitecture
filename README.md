@@ -9,7 +9,7 @@ Before starting, I assume
 3. And are eager to learn **Android MVP Architecture** with different types of implementation. 
 
 **AndroidMVPArchitecure Includes:**
-1. Four branches viz  **master**, **mvp_with_rx_and_dagger** and **mvp_with_rx_and_kotlin** **new_dagger_impl**
+1. Four branches viz  **master**, **mvp_with_rx_and_dagger**, **mvp_with_rx_and_kotlin** and **new_dagger_impl**
 2. **master** -> Implementation of MVP Architecture without using Dagger, RxJava, RxAndroid
 3. **mvp_with_rx_and_dagger** -> Implementation with Dagger2, RxJava, RxAndroid
 4. **mvp_with_rx_and_kotlin** ->  Implementation with Dagger2, RxJava, RxAndroid, Kotlin
